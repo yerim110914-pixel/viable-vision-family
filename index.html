@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>VIABLE VISION FAMILY 바이너리 후원계보 V10</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#101828">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIABLE 계보도">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+:root{
+ --bg:#f4f7fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#98a2b3;
+ --blue:#2563eb;--green:#059669;--red:#dc2626;--amber:#d97706;--purple:#7c3aed;
+ --left:#eaf2ff;--right:#eafff3;--top:#fff4d8;--cyan:#e8f7fb;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#101828;color:#fff;padding:11px 13px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0 auto 0 0}
+header .brand{font-family:Georgia,serif;letter-spacing:.8px}
+button,input,select,textarea{font:inherit}
+button{border:0;border-radius:9px;padding:9px 11px;cursor:pointer}
+.btn{background:#e9eef5;color:#1d2939}.primary{background:var(--blue);color:#fff}.green{background:var(--green);color:#fff}.danger{background:var(--red);color:#fff}.amber{background:var(--amber);color:#fff}.purple{background:var(--purple);color:#fff}
+.tabs{display:flex;gap:6px;background:#fff;padding:8px 10px;border-bottom:1px solid #e4e7ec;overflow-x:auto}
+.tab{white-space:nowrap}.tab.active{background:#101828;color:#fff}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:#fff;padding:9px 10px;border-bottom:1px solid #e4e7ec}
+.toolbar input{border:1px solid #cbd5e1;border-radius:9px;padding:8px 9px;min-width:155px}
+.status{font-size:12px;color:var(--muted);margin-left:auto}
+.local-banner{background:#ecfdf3;border-bottom:1px solid #a7f3d0;padding:7px 11px;font-size:12px;color:#065f46}
+#stage{height:calc(100vh - 286px);position:relative;overflow:hidden;background:
+linear-gradient(#e8edf3 1px,transparent 1px),linear-gradient(90deg,#e8edf3 1px,transparent 1px);background-size:24px 24px}
+svg{width:100%;height:100%;touch-action:none;user-select:none}
+.link{stroke:var(--line);stroke-width:2;fill:none}
+.node circle{stroke:#344054;stroke-width:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.12))}
+.node.top circle{fill:var(--top)}.node.left circle{fill:var(--left)}.node.right circle{fill:var(--right)}
+.node.selected circle{stroke:#f79009;stroke-width:4}
+.node text{text-anchor:middle;dominant-baseline:middle;pointer-events:none}.nm{font-size:12px;font-weight:800}.sub{font-size:9px;fill:#475467}.tag{font-size:9px;font-weight:800;fill:#667085}
+.panel{position:absolute;right:10px;top:10px;width:280px;max-height:calc(100% - 20px);overflow:auto;background:rgba(255,255,255,.97);border:1px solid #d0d5dd;border-radius:12px;padding:11px;font-size:12px;box-shadow:0 8px 25px rgba(0,0,0,.08)}
+.panel h3{font-size:14px;margin:0 0 7px}.kv{display:grid;grid-template-columns:1fr auto;gap:5px 8px}.kv b{text-align:right}.badge{display:inline-block;background:#eef2f6;border-radius:999px;padding:3px 7px;margin:1px 2px 3px 0}.small{font-size:11px;color:#667085}.warn{color:#b54708}.good{color:#067647}
+.hint{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.94);border:1px solid #d0d5dd;border-radius:9px;padding:7px 9px;font-size:11px;color:#667085}
+.contentView{display:none;height:100%;overflow:auto;background:#fff;padding:12px}
+table{border-collapse:collapse;width:100%;font-size:12px}th,td{border:1px solid #d0d5dd;padding:7px;text-align:left}th{background:#f2f4f7;position:sticky;top:0;z-index:2}tr.sel{background:#fff7df}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}.card{border:1px solid #e4e7ec;border-radius:12px;padding:12px;background:#fff}.card h3{margin:0 0 8px;font-size:14px}
+.plan-title{font-size:20px;font-weight:900;margin:4px 0 12px}.plan-box{border:1px solid #d0d5dd;border-radius:12px;padding:12px;margin:10px 0}.plan-box h3{margin:0 0 8px}.rank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:7px}.rank-item{border-radius:10px;padding:9px;background:#e9f4f7;border:1px solid #c9e6ec}.rank-item b{display:block}
+dialog{border:0;border-radius:15px;padding:0;width:min(560px,calc(100% - 24px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff;padding:14px 16px;font-weight:800}.db{padding:14px 16px;display:grid;gap:10px;max-height:70vh;overflow:auto}.da{display:flex;gap:7px;justify-content:flex-end;padding:0 16px 14px;flex-wrap:wrap}
+.field{display:grid;gap:4px}.field label{font-size:12px;color:#475467}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:9px;padding:9px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.notice{padding:9px 10px;background:#fff7ed;border:1px solid #fed7aa;border-radius:9px;font-size:12px;color:#9a3412}
+.rate-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:6px;align-items:center}.rate-grid input{padding:7px;border:1px solid #cbd5e1;border-radius:8px}
+@media(max-width:760px){
+ header h1{width:100%}.status{width:100%;margin-left:0}.panel{display:none}.row{grid-template-columns:1fr}
+ #stage{height:calc(100vh - 357px)}.toolbar button{padding:8px 9px}.local-banner{font-size:11px}.tabs{padding-bottom:6px}
+}
+@media print{header,.tabs,.toolbar,.local-banner,.panel,.hint{display:none!important}#stage{height:100vh}.contentView{height:auto;overflow:visible}body{background:#fff}}
+
+.meeting-warning{
+  background:#fff1f2;
+  border-bottom:2px solid #fda4af;
+  color:#9f1239;
+  padding:10px 12px;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+}
+.meeting-warning b{font-weight:900}
+@media(max-width:760px){
+  .meeting-warning{font-size:12px;line-height:1.45;padding:9px 10px}
+}
+
+
+#accessGate{
+ position:fixed;inset:0;z-index:99999;
+ background:radial-gradient(circle at 50% 12%,#31486c 0,#101828 48%,#070c15 100%);
+ display:flex;align-items:center;justify-content:center;padding:20px;color:white
+}
+.gate-card{
+ width:min(430px,100%);background:rgba(255,255,255,.98);color:#182230;
+ border-radius:22px;padding:22px;box-shadow:0 28px 90px rgba(0,0,0,.5)
+}
+.gate-logo{width:96px;height:96px;border-radius:21px;display:block;margin:0 auto 12px;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.gate-title{text-align:center;font-size:21px;font-weight:900;margin:4px 0}
+.gate-sub{text-align:center;color:#667085;font-size:12px;line-height:1.55;margin:0 0 16px}
+.gate-field{display:grid;gap:5px;margin:10px 0}
+.gate-field label{font-size:12px;color:#475467;font-weight:800}
+.gate-field input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
+.gate-btn{width:100%;padding:12px;border:0;border-radius:11px;background:#101828;color:#fff;font-weight:900;margin-top:8px;cursor:pointer}
+.gate-error{min-height:18px;color:#b42318;font-size:12px;text-align:center;margin-top:7px}
+.gate-warning{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;color:#9f1239;border-radius:10px;padding:10px;font-size:11px;line-height:1.55}
+#appRoot.locked{display:none!important}
+.activation-chip{font-size:11px;background:#344054;color:#fff;padding:5px 8px;border-radius:999px;white-space:nowrap}
+
+</style>
+</head>
+<body>
+<div id="accessGate">
+  <div class="gate-card">
+    <img class="gate-logo" src="icon-192.png" alt="VIABLE VISION FAMILY">
+    <div class="gate-title">VIABLE VISION FAMILY</div>
+    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.</div>
+
+    <div class="gate-field">
+      <label>추천</label>
+      <div style="padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:#f8fafc;font-size:16px;font-weight:800">
+        홍천서석미라클샵
+      </div>
+    </div>
+    <div class="gate-field">
+      <label>추천인 패스워드</label>
+      <input id="accessPassword" type="password" autocomplete="current-password" placeholder="패스워드 입력">
+    </div>
+    <button class="gate-btn" id="activateAppBtn">앱 활성화</button>
+    <div class="gate-error" id="gateError"></div>
+
+    <div class="gate-warning"><b>주의:</b> 이 앱은 스폰서 미팅 시 <b>가상 계보도 작성용</b>으로 제작되었습니다.
+    실제 회사 전산 계보 또는 공식 정산자료와 혼동하지 않도록 유의해 주세요.</div>
+  </div>
+</div>
+<div id="appRoot" class="locked">
+
+<header>
+  <h1><span class="brand">VIABLE</span> 바이너리 후원계보</h1>
+  <span class="activation-chip" id="activationChip">미인증</span>
+  <button class="btn" id="lockAppBtn">이 기기 잠금</button>
+  <button class="btn green" id="shareBtn">카톡·SNS 공유</button>
+  <button class="btn" id="installBtn" style="display:none">홈화면 설치</button>
+  <button class="btn" id="printBtn">인쇄 / PDF</button>
+  <button class="btn" id="backupBtn">내 계보 백업</button>
+  <button class="btn" id="restoreBtn">내 계보 복원</button>
+  <button class="btn danger" id="resetBtn">내 데이터 초기화</button>
+  <input id="fileInput" type="file" accept=".json" hidden>
+</header>
+
+<div class="tabs">
+  <button class="tab active" data-view="tree">전체 후원계보</button>
+  <button class="tab" data-view="direct">선택회원 직하위 2명</button>
+  <button class="tab" data-view="bonus">보상현황</button>
+  <button class="tab" data-view="table">회원목록</button>
+  <button class="tab" data-view="plan">비아블 보상플랜</button>
+</div>
+
+<div class="toolbar" id="toolbar">
+  <button class="btn primary" id="addLeft">좌(L) 직하위 추가</button>
+  <button class="btn primary" id="addRight">우(R) 직하위 추가</button>
+  <button class="btn amber" id="spillBtn">아래 빈자리 후원</button>
+  <button class="btn" id="editBtn">회원 수정</button>
+  <button class="btn" id="moveBtn">후원 위치 이동</button>
+  <button class="btn danger" id="deleteBtn">회원 삭제</button>
+  <input id="search" placeholder="이름 / 회원번호 검색">
+  <button class="btn" id="searchBtn">검색</button>
+  <button class="btn" id="fitBtn">전체보기</button>
+  <button class="btn purple" id="settingsBtn">보상설정</button>
+  <span class="status" id="status">준비됨</span>
+</div>
+
+<div class="local-banner"><b>각자 저장 방식:</b> 같은 링크를 여러 사람이 사용해도 계보와 실적 데이터는 각자의 현재 기기·브라우저에 따로 저장됩니다. 중요한 데이터는 백업해 두세요.</div>
+<div class="meeting-warning">
+  <b>⚠ 주의</b> : 이 앱은 <b>스폰서 미팅 시 가상 계보도 작성용</b>으로 제작되었습니다.
+  실제 회사 전산 계보 또는 공식 정산자료와 혼동하지 않도록 유의해 주세요.
+</div>
+
+
+<div style="background:#fff7ed;border-bottom:1px solid #fed7aa;padding:7px 11px;font-size:12px;color:#9a3412">
+<b>앱처럼 사용:</b> 이 사이트를 HTTPS 주소로 연 뒤 휴대폰은 <b>홈 화면에 추가/앱 설치</b>, PC는 Chrome·Edge의 <b>앱 설치</b>를 선택하면 비아블 비전 패밀리 아이콘으로 바로 실행됩니다.
+</div>
+
+<div id="stage">
+  <svg id="svg"><g id="viewport"><g id="links"></g><g id="nodes"></g></g></svg>
+  <div id="contentView" class="contentView"></div>
+  <div class="panel" id="panel"></div>
+  <div class="hint" id="hint">후원계보는 한 회원당 L 1명 + R 1명, 최대 2명입니다.</div>
+</div>
+
+<dialog id="memberDlg">
+  <div class="dh" id="memberTitle">회원 등록</div>
+  <div class="db">
+    <div class="notice" id="placementNotice"></div>
+    <div class="field"><label>이름 *</label><input id="nameF"></div>
+    <div class="row">
+      <div class="field"><label>회원번호</label><input id="codeF"></div>
+      <div class="field"><label>직급</label>
+        <select id="rankF">
+          <option value="">자동(PV 기준)</option>
+          <option value="GUEST">GUEST</option>
+          <option value="MEMBER">MEMBER</option>
+          <option value="MANIA">MANIA</option>
+          <option value="DIRECTOR">DIRECTOR</option>
+          <option value="EMERALD">EMERALD</option>
+          <option value="DIAMOND">DIAMOND</option>
+          <option value="GREEN_DIAMOND">GREEN DIAMOND</option>
+          <option value="BLUE_DIAMOND">BLUE DIAMOND</option>
+          <option value="RED_DIAMOND">RED DIAMOND</option>
+          <option value="CROWN">CROWN</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>직추천인</label><select id="referrerF"></select></div>
+    <div class="row">
+      <div class="field"><label>본인 누적 PV</label><input id="pvF" type="number" min="0" value="0"></div>
+      <div class="field"><label>현재 기수 CV</label><input id="cvF" type="number" min="0" value="0"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>가입일</label><input id="dateF" type="date"></div>
+      <div class="field"><label>연락처</label><input id="phoneF"></div>
+    </div>
+    <div class="field"><label>메모</label><textarea id="memoF" rows="2"></textarea></div>
+    <div class="small">직급은 직접 선택할 수 있으며, '자동(PV 기준)'을 선택하면 본인 및 후원 하위의 누적 PV 합계로 자동 표시합니다. 직추천인은 추천보너스·추천매칭 계산에 사용하며, 후원계보 L/R 배치와는 별개입니다.</div>
+  </div>
+  <div class="da"><button class="btn" id="memberCancel">취소</button><button class="btn green" id="memberSave">저장</button></div>
+</dialog>
+
+<dialog id="moveDlg">
+  <div class="dh">후원 위치 이동</div>
+  <div class="db">
+    <div class="notice">후원계보에서 각 상위회원은 L/R 두 자리만 가질 수 있습니다. 선택 회원의 하위조직도 함께 이동합니다.</div>
+    <div class="field"><label>새 후원 상위회원</label><select id="moveParentF"></select></div>
+    <div class="field"><label>위치</label><select id="moveSideF"><option value="left">왼쪽(L)</option><option value="right">오른쪽(R)</option></select></div>
+  </div>
+  <div class="da"><button class="btn" id="moveCancel">취소</button><button class="btn primary" id="moveSave">이동</button></div>
+</dialog>
+
+<dialog id="settingsDlg">
+  <div class="dh">비아블 보상 계산 설정</div>
+  <div class="db">
+    <div class="notice">자료에는 후원보너스가 직급에 따라 12~10%라고 표시되어 있으나 세부 직급별 요율표가 보이지 않습니다. 아래 요율은 직접 수정할 수 있습니다.</div>
+    <div class="field"><label>추천보너스율 (%)</label><input id="refRateF" type="number" min="0" step="0.1"></div>
+    <div class="field"><label>후원보너스 매기 상한 (원)</label><input id="sponsorCapF" type="number" min="0"></div>
+    <div class="field"><label>추천매칭 압축 기준 후원보너스 (원)</label><input id="compressMinF" type="number" min="0"></div>
+    <div class="field">
+      <label>직급별 후원보너스율 (%) — 초기값은 참고용</label>
+      <div class="rate-grid" id="rateGrid"></div>
+    </div>
+    <div class="small">품위유지 보너스와 추천매칭 세대별 비율은 제공하신 표의 값을 적용했습니다.</div>
+  </div>
+  <div class="da"><button class="btn" id="settingsCancel">취소</button><button class="btn green" id="settingsSave">저장</button></div>
+</dialog>
+
+<script>
+(() => {
+
+ const ACCESS_PASSWORD_HASH="f6600895cffcc106b5d4a22c0ad6b63a7c895cee324d5e90e4b071d7c9b7edbb";
+ const ACCESS_STORAGE_KEY="viableVisionV9_activation";
+ let accessFailures=0;
+
+ async function accessSha256(text){
+   const bytes=new TextEncoder().encode(text);
+   const digest=await crypto.subtle.digest("SHA-256",bytes);
+   return Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,"0")).join("");
+ }
+
+ function getActivation(){
+   try{return JSON.parse(localStorage.getItem(ACCESS_STORAGE_KEY)||"null")}catch(e){return null}
+ }
+
+ function unlockInterface(){
+   const a=getActivation();
+   if(!a||!a.active)return false;
+   const gate=document.getElementById("accessGate");
+   const root=document.getElementById("appRoot");
+   if(gate)gate.style.display="none";
+   if(root)root.classList.remove("locked");
+   const chip=document.getElementById("activationChip");
+   if(chip)chip.textContent="추천인: "+(a.referrer||"승인됨");
+   return true;
+ }
+
+ async function activateProtectedApp(){
+   const ref="홍천서석미라클샵";
+   const pw=document.getElementById("accessPassword")?.value||"";
+   const err=document.getElementById("gateError");
+      if(!pw){if(err)err.textContent="추천인 패스워드를 입력하세요.";return}
+
+   if(accessFailures>=5){
+     if(err)err.textContent="입력 오류가 많습니다. 5초 후 다시 시도해 주세요.";
+     await new Promise(r=>setTimeout(r,5000));
+   }
+
+   let hash="";
+   try{
+     hash=await accessSha256(pw);
+   }catch(e){
+     if(location.protocol==="file:" && pw==="25123") hash=ACCESS_PASSWORD_HASH;
+     else{if(err)err.textContent="이 환경에서는 보안 확인을 실행할 수 없습니다.";return}
+   }
+
+   if(hash!==ACCESS_PASSWORD_HASH){
+     accessFailures++;
+     if(err)err.textContent="추천인 패스워드가 올바르지 않습니다.";
+     const p=document.getElementById("accessPassword");if(p){p.value="";p.focus()}
+     return;
+   }
+
+   localStorage.setItem(ACCESS_STORAGE_KEY,JSON.stringify({
+     active:true,referrer:ref,activatedAt:new Date().toISOString()
+   }));
+   accessFailures=0;
+   if(err)err.textContent="";
+   unlockInterface();
+ }
+
+ window.addEventListener("DOMContentLoaded",()=>{
+   const activate=document.getElementById("activateAppBtn");
+   if(activate)activate.addEventListener("click",activateProtectedApp);
+   const pw=document.getElementById("accessPassword");
+   if(pw)pw.addEventListener("keydown",e=>{if(e.key==="Enter")activateProtectedApp()});
+   unlockInterface();
+
+   const lock=document.getElementById("lockAppBtn");
+   if(lock)lock.addEventListener("click",()=>{
+     if(!confirm("이 기기의 앱 활성화를 해제하고 다시 추천인 패스워드를 요구할까요?"))return;
+     localStorage.removeItem(ACCESS_STORAGE_KEY);
+     location.reload();
+   });
+ });
+
+ const $=id=>document.getElementById(id);
+ const svg=$('svg'),viewport=$('viewport'),links=$('links'),nodes=$('nodes'),panel=$('panel'),contentView=$('contentView');
+ let DB={version:6,rootId:null,members:{}},selected=null,view='tree',formMode='edit',pendingParent=null,pendingSide=null;
+ let tf={x:20,y:20,k:1},drag=null,pinch=null;
+
+ const RANKS=[
+  {key:'GUEST',label:'GUEST',min:0,sub:0},
+  {key:'MEMBER',label:'MEMBER',min:1,sub:0},
+  {key:'MANIA',label:'MANIA',min:700000,sub:0},
+  {key:'DIRECTOR',label:'DIRECTOR',min:2100000,sub:10000},
+  {key:'EMERALD',label:'EMERALD',min:14000000,sub:10000},
+  {key:'DIAMOND',label:'DIAMOND',min:100000000,sub:30000,extra:'추천계보상 DIRECTOR 1:1'},
+  {key:'GREEN_DIAMOND',label:'GREEN DIAMOND',min:300000000,sub:30000,extra:'추천계보상 EMERALD 1:1'},
+  {key:'BLUE_DIAMOND',label:'BLUE DIAMOND',min:1000000000,sub:70000,extra:'추천계보상 DIAMOND 1:1'},
+  {key:'RED_DIAMOND',label:'RED DIAMOND',min:3000000000,sub:70000,extra:'추천계보상 GREEN DIAMOND 1:1'},
+  {key:'CROWN',label:'CROWN',min:10000000000,sub:70000,extra:'추천계보상 BLUE DIAMOND 1:1'}
+ ];
+ const MATCH_RATES={
+  DIRECTOR:[10],EMERALD:[10,5],DIAMOND:[10,5,5],GREEN_DIAMOND:[10,5,5,2],
+  BLUE_DIAMOND:[10,5,5,3],RED_DIAMOND:[10,5,5,3,2],CROWN:[10,5,5,3,3]
+ };
+ const DIGNITY={
+  DIRECTOR:{need:2100000,pay:150000},EMERALD:{need:3500000,pay:300000},DIAMOND:{need:10000000,pay:750000},
+  GREEN_DIAMOND:{need:19000000,pay:1400000},BLUE_DIAMOND:{need:34000000,pay:2300000},
+  RED_DIAMOND:{need:65000000,pay:4000000},CROWN:{need:135000000,pay:6000000}
+ };
+ let settings={
+  refRate:12,sponsorCap:50000000,compressMin:30000,
+  sponsorRates:{MANIA:12,DIRECTOR:12,EMERALD:12,DIAMOND:12,GREEN_DIAMOND:10,BLUE_DIAMOND:10,RED_DIAMOND:10,CROWN:10}
+ };
+
+ const uid=()=> 'm_'+Math.random().toString(36).slice(2,10);
+ const mk=(v={})=>Object.assign({id:uid(),name:'',code:'',rankOverride:'',pv:0,cv:0,joinDate:'',phone:'',memo:'',parentId:null,side:'',referrerId:null},v);
+ const all=()=>Object.values(DB.members);
+ const get=id=>id?DB.members[id]||null:null;
+ const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ const money=n=>Math.round(Number(n||0)).toLocaleString()+'원';
+ const num=n=>Math.round(Number(n||0)).toLocaleString();
+ const label=m=>m?`${m.name}${m.code?' · '+m.code:''}`:'';
+ function say(t){$('status').textContent=t;clearTimeout(say.t);say.t=setTimeout(()=>$('status').textContent='준비됨',2300)}
+ function save(){localStorage.setItem('viableBinaryV6_data',JSON.stringify(DB));localStorage.setItem('viableBinaryV6_settings',JSON.stringify(settings));say('저장했습니다.')}
+
+ function child(parentId,side){return all().find(m=>m.parentId===parentId&&m.side===side)||null}
+ function kids(id){return {left:child(id,'left'),right:child(id,'right')}}
+ function directRefs(id){return all().filter(m=>m.referrerId===id)}
+ function isDescendant(ancestorId,candidateId){let cur=get(candidateId),guard=0;while(cur&&cur.parentId&&guard++<1000){if(cur.parentId===ancestorId)return true;cur=get(cur.parentId)}return false}
+ function isReferralDescendant(ancestorId,candidateId){let cur=get(candidateId),guard=0;while(cur&&cur.referrerId&&guard++<1000){if(cur.referrerId===ancestorId)return true;cur=get(cur.referrerId)}return false}
+ function subtree(id){const m=get(id);if(!m)return{count:0,pv:0,cv:0};const c=kids(id),l=subtree(c.left?.id),r=subtree(c.right?.id);return{count:1+l.count+r.count,pv:Number(m.pv||0)+l.pv+r.pv,cv:Number(m.cv||0)+l.cv+r.cv}}
+ function groupPV(id){return subtree(id).pv}
+ function rankOf(id){
+   const m=get(id);
+   if(m && m.rankOverride){
+     const fixed=RANKS.find(r=>r.key===m.rankOverride);
+     if(fixed) return fixed;
+   }
+   const gp=groupPV(id);let r=RANKS[0];
+   for(const x of RANKS)if(gp>=x.min)r=x;
+   return r
+ }
+ function rankIndex(key){return RANKS.findIndex(r=>r.key===key)}
+ function calcSides(id){const c=kids(id);return{L:subtree(c.left?.id),R:subtree(c.right?.id)}}
+ function subscriptionOK(id){const m=get(id),r=rankOf(id);return Number(m?.cv||0)>=Number(r.sub||0)}
+ function referralBonus(id){
+   const r=rankOf(id);if(rankIndex(r.key)<rankIndex('MEMBER'))return 0;
+   return directRefs(id).reduce((s,m)=>s+Number(m.cv||0),0)*(Number(settings.refRate||0)/100);
+ }
+ function sponsorBase(id){
+   const r=rankOf(id),s=calcSides(id),small=Math.min(s.L.cv,s.R.cv);
+   if(rankIndex(r.key)<rankIndex('MANIA'))return{raw:0,pay:0,small,rate:0,capCarryCV:0,eligible:false};
+   const rate=Number(settings.sponsorRates[r.key]??0);
+   if(!subscriptionOK(id))return{raw:0,pay:0,small,rate,capCarryCV:0,eligible:false};
+   const raw=small*(rate/100),cap=Number(settings.sponsorCap||0),pay=cap>0?Math.min(raw,cap):raw;
+   const excess=Math.max(0,raw-pay),capCarryCV=rate>0?excess/(rate/100):0;
+   return{raw,pay,small,rate,capCarryCV,eligible:true};
+ }
+ function compressedFrontier(parentIds){
+   const out=[];
+   function expand(id,guard=0){
+     if(guard>30)return;
+     for(const ch of directRefs(id)){
+       if(sponsorBase(ch.id).pay>=Number(settings.compressMin||0))out.push(ch);
+       else expand(ch.id,guard+1);
+     }
+   }
+   for(const id of parentIds)expand(id);
+   return out;
+ }
+ function matchingBonus(id){
+   const r=rankOf(id),rates=MATCH_RATES[r.key];if(!rates)return 0;
+   let parents=[id],total=0;
+   for(let g=0;g<rates.length;g++){
+     const front=compressedFrontier(parents);
+     total += front.reduce((s,m)=>s+sponsorBase(m.id).pay*(rates[g]/100),0);
+     parents=front.map(m=>m.id);
+     if(!parents.length)break;
+   }
+   return total;
+ }
+ function dignityBonus(id){
+   const r=rankOf(id),rule=DIGNITY[r.key];if(!rule)return 0;
+   const s=calcSides(id),small=Math.min(s.L.cv,s.R.cv);
+   return small>=rule.need?rule.pay:0;
+ }
+ function fastPowerStatus(id){
+   const r=rankOf(id),c=kids(id);
+   function countInLeg(legRootId){
+     if(!legRootId)return 0;
+     let count=0;
+     const gen1=directRefs(id);
+     const gen2=gen1.flatMap(x=>directRefs(x.id));
+     for(const m of [...gen1,...gen2]){
+       const inLeg=m.id===legRootId||isDescendant(legRootId,m.id);
+       if(inLeg&&Number(m.cv||0)>=700000)count++;
+     }
+     return count;
+   }
+   const L=countInLeg(c.left?.id),R=countInLeg(c.right?.id);
+   return{L,R,qualified:rankIndex(r.key)>=rankIndex('MANIA')&&L>=6&&R>=6};
+ }
+ function totalBonus(id){return referralBonus(id)+sponsorBase(id).pay+matchingBonus(id)+dignityBonus(id)}
+
+ function migrateOld(){
+   const keys=['binaryV5_data','binaryV4_data'];
+   for(const key of keys){
+     try{
+       const old=JSON.parse(localStorage.getItem(key)||'null');
+       if(old&&old.members){
+         for(const o of Object.values(old.members)){
+           const m=mk({id:o.id||uid(),name:o.name||'',code:o.code||'',rankOverride:o.rankOverride||o.rank||'',pv:Number(o.pv||0),cv:Number(o.cv||0),joinDate:o.joinDate||'',phone:o.phone||'',memo:o.memo||'',parentId:o.parentId||null,side:o.side||'',referrerId:o.referrerId||null});
+           DB.members[m.id]=m;
+         }
+         DB.rootId=old.rootId||all().find(x=>!x.parentId)?.id||all()[0]?.id||null;
+         return !!DB.rootId;
+       }
+     }catch(e){}
+   }
+   return false;
+ }
+ function load(){
+   try{
+     const d=JSON.parse(localStorage.getItem('viableBinaryV6_data')||'null');
+     if(d&&d.members)DB=d;
+     else if(!migrateOld()){const r=mk({name:'나',code:'TOP-001'});DB.members[r.id]=r;DB.rootId=r.id}
+   }catch(e){const r=mk({name:'나',code:'TOP-001'});DB.members[r.id]=r;DB.rootId=r.id}
+   try{Object.assign(settings,JSON.parse(localStorage.getItem('viableBinaryV6_settings')||'{}'))}catch(e){}
+   settings.sponsorRates=Object.assign({MANIA:12,DIRECTOR:12,EMERALD:12,DIAMOND:12,GREEN_DIAMOND:10,BLUE_DIAMOND:10,RED_DIAMOND:10,CROWN:10},settings.sponsorRates||{});
+ }
+
+ function layout(rootId=DB.rootId,directOnly=false){
+   const out=[];let cursor=0;
+   function walk(id,d,side){
+     const m=get(id);if(!m)return;
+     const c=kids(id);
+     if(!directOnly||d<1)walk(c.left?.id,d+1,'left');
+     const x=90+cursor++*155,y=90+d*155;out.push({m,x,y,side:side||'top'});
+     if(!directOnly||d<1)walk(c.right?.id,d+1,'right');
+   }
+   if(rootId)walk(rootId,0,'top');return out;
+ }
+ function activeLayout(){return view==='direct'?layout(selected||DB.rootId,true):layout(DB.rootId,false)}
+ function addLink(a,b){const p=document.createElementNS('http://www.w3.org/2000/svg','path'),mid=(a.y+b.y)/2;p.setAttribute('d',`M${a.x},${a.y+45} C${a.x},${mid} ${b.x},${mid} ${b.x},${b.y-45}`);p.setAttribute('class','link');links.appendChild(p)}
+ function addNode(d){
+   const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.dataset.id=d.m.id;g.setAttribute('transform',`translate(${d.x},${d.y})`);g.setAttribute('class',`node ${d.side} ${selected===d.m.id?'selected':''}`);g.style.cursor='pointer';
+   const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','47');g.appendChild(c);
+   const tag=document.createElementNS('http://www.w3.org/2000/svg','text');tag.setAttribute('class','tag');tag.setAttribute('y','-56');tag.textContent=d.side==='left'?'L':d.side==='right'?'R':'TOP';g.appendChild(tag);
+   const n=document.createElementNS('http://www.w3.org/2000/svg','text');n.setAttribute('class','nm');n.setAttribute('y','-15');n.textContent=(d.m.name||'').slice(0,8);g.appendChild(n);
+   const r=document.createElementNS('http://www.w3.org/2000/svg','text');r.setAttribute('class','sub');r.setAttribute('y','2');r.textContent=rankOf(d.m.id).label.slice(0,14);g.appendChild(r);
+   const p=document.createElementNS('http://www.w3.org/2000/svg','text');p.setAttribute('class','sub');p.setAttribute('y','18');p.textContent='PV '+num(groupPV(d.m.id));g.appendChild(p);
+   const v=document.createElementNS('http://www.w3.org/2000/svg','text');v.setAttribute('class','sub');v.setAttribute('y','32');v.textContent='CV '+num(d.m.cv);g.appendChild(v);
+   g.onclick=e=>{e.stopPropagation();selected=d.m.id;draw();say(d.m.name+' 선택')};
+   g.ondblclick=e=>{e.stopPropagation();selected=d.m.id;openEdit(d.m)};
+   nodes.appendChild(g);
+ }
+
+ function draw(){
+   const isContent=['bonus','table','plan'].includes(view);
+   svg.style.display=isContent?'none':'block';contentView.style.display=isContent?'block':'none';
+   panel.style.display=isContent?'none':'block';$('hint').style.display=isContent?'none':'block';
+   if(view==='bonus'){drawBonus();return}
+   if(view==='table'){drawTable();return}
+   if(view==='plan'){drawPlan();return}
+   contentView.innerHTML='';links.innerHTML='';nodes.innerHTML='';
+   const list=activeLayout(),pos=new Map(list.map(x=>[x.m.id,x]));
+   list.forEach(d=>{const c=kids(d.m.id);['left','right'].forEach(side=>{const ch=c[side];if(ch&&pos.get(ch.id))addLink(d,pos.get(ch.id))})});
+   list.forEach(addNode);updatePanel();applyTf();
+   $('hint').textContent=view==='direct'?'선택회원의 직하위 L/R 두 자리만 표시합니다.':'한 회원의 후원 직하위는 L 1명 + R 1명, 최대 2명입니다.';
+ }
+ function updatePanel(){
+   const m=get(selected)||get(DB.rootId);if(!m){panel.innerHTML='회원 없음';return}
+   const r=rankOf(m.id),s=calcSides(m.id),sp=sponsorBase(m.id),fp=fastPowerStatus(m.id),ref=get(m.referrerId),par=get(m.parentId),c=kids(m.id);
+   panel.innerHTML=`<h3>${esc(m.name)}</h3>
+    <span class="badge">${esc(r.label)}</span><span class="badge">${esc(m.code||'번호 없음')}</span>
+    <div class="kv" style="margin-top:8px">
+      <span>직추천인</span><b>${esc(ref?.name||'없음')}</b>
+      <span>후원 상위</span><b>${esc(par?.name||'최상위')}</b>
+      <span>직하위 L / R</span><b>${esc(c.left?.name||'-')} / ${esc(c.right?.name||'-')}</b>
+      <span>직급 적용</span><b>${m.rankOverride?'수동':'자동(PV)'}</b>
+      <span>그룹 누적 PV</span><b>${num(groupPV(m.id))}</b>
+      <span>본인 현재 CV</span><b>${num(m.cv)}</b>
+      <span>구독조건</span><b>${r.sub?num(r.sub)+' CV':'없음'}</b>
+      <span>구독충족</span><b class="${subscriptionOK(m.id)?'good':'warn'}">${subscriptionOK(m.id)?'충족':'미충족'}</b>
+      <span>L / R 현재 CV</span><b>${num(s.L.cv)} / ${num(s.R.cv)}</b>
+      <span>소실적 CV</span><b>${num(Math.min(s.L.cv,s.R.cv))}</b>
+      <span>추천보너스</span><b>${money(referralBonus(m.id))}</b>
+      <span>후원보너스</span><b>${money(sp.pay)}</b>
+      <span>추천매칭</span><b>${money(matchingBonus(m.id))}</b>
+      <span>품위유지</span><b>${money(dignityBonus(m.id))}</b>
+      <span>예상 합계</span><b>${money(totalBonus(m.id))}</b>
+    </div>
+    ${r.extra?`<div class="small warn" style="margin-top:7px">추가 승급조건: ${esc(r.extra)}</div>`:''}
+    <div class="small" style="margin-top:7px">패스트 파워: 좌 ${fp.L}/6 · 우 ${fp.R}/6 ${fp.qualified?'✓ 달성조건 충족':'(진행중)'}</div>
+    ${sp.capCarryCV>0?`<div class="small">후원보너스 상한 초과분 참고 이월 CV: ${num(sp.capCarryCV)}</div>`:''}
+    <div class="small warn" style="margin-top:7px">※ 후원보너스 직급별 요율은 제공 사진에 12~10% 범위만 보여 설정값을 사용합니다.</div>`;
+ }
+
+ function drawBonus(){
+   const cards=all().map(m=>{
+     const r=rankOf(m.id),s=calcSides(m.id),sp=sponsorBase(m.id),fp=fastPowerStatus(m.id);
+     return `<div class="card"><h3>${esc(m.name)} <span class="badge">${esc(r.label)}</span></h3>
+      <div class="kv">
+       <span>그룹 PV</span><b>${num(groupPV(m.id))}</b>
+       <span>소실적 CV</span><b>${num(Math.min(s.L.cv,s.R.cv))}</b>
+       <span>추천보너스</span><b>${money(referralBonus(m.id))}</b>
+       <span>후원보너스</span><b>${money(sp.pay)}</b>
+       <span>추천매칭</span><b>${money(matchingBonus(m.id))}</b>
+       <span>품위유지</span><b>${money(dignityBonus(m.id))}</b>
+       <span>예상합계</span><b>${money(totalBonus(m.id))}</b>
+      </div><div class="small">패스트 파워 진행: L ${fp.L}/6 · R ${fp.R}/6</div></div>`;
+   }).join('');
+   contentView.innerHTML=`<div class="plan-title">현재 기수 보상현황</div>
+    <div class="notice">CV는 매월 Refresh되는 현재 기수 값으로 입력하세요. 후원보너스는 구독조건 미충족 시 0원으로 계산합니다. 직급별 후원요율은 보상설정에서 확인·수정하세요.</div>
+    <div class="cards" style="margin-top:10px">${cards||'<div class="small">회원이 없습니다.</div>'}</div>`;
+ }
+ function drawTable(){
+   const rows=all().map((m,i)=>{
+    const r=rankOf(m.id),p=get(m.parentId),ref=get(m.referrerId),s=calcSides(m.id);
+    return `<tr data-id="${m.id}" class="${selected===m.id?'sel':''}"><td>${i+1}</td><td>${esc(m.name)}</td><td>${esc(m.code)}</td><td>${esc(r.label)}</td><td>${m.rankOverride?'수동':'자동'}</td><td>${esc(ref?.name||'')}</td><td>${esc(p?.name||'')}</td><td>${m.side==='left'?'L':m.side==='right'?'R':'TOP'}</td><td>${num(m.pv)}</td><td>${num(groupPV(m.id))}</td><td>${num(m.cv)}</td><td>${num(s.L.cv)}</td><td>${num(s.R.cv)}</td><td>${money(totalBonus(m.id))}</td></tr>`;
+   }).join('');
+   contentView.innerHTML=`<table><thead><tr><th>No</th><th>이름</th><th>회원번호</th><th>직급</th><th>방식</th><th>직추천인</th><th>후원상위</th><th>위치</th><th>본인PV</th><th>그룹PV</th><th>본인CV</th><th>L CV</th><th>R CV</th><th>예상보상</th></tr></thead><tbody>${rows}</tbody></table>`;
+   contentView.querySelectorAll('tr[data-id]').forEach(tr=>tr.onclick=()=>{selected=tr.dataset.id;draw();say(get(selected).name+' 선택')});
+ }
+ function drawPlan(){
+   const ranks=RANKS.map(r=>`<div class="rank-item"><b>${esc(r.label)}</b>${r.key==='GUEST'?'회원가입':r.key==='MEMBER'?'70만 PV 미만':num(r.min)+' PV 이상'}<br><span class="small">구독: ${r.sub?num(r.sub)+' CV':'조건 없음'}</span>${r.extra?`<br><span class="small">${esc(r.extra)}</span>`:''}</div>`).join('');
+   contentView.innerHTML=`<div class="plan-title">VIABLE 보상플랜 적용 내용</div>
+   <div class="plan-box"><h3>보상플랜 특징</h3><div class="rank-grid">
+    <div class="rank-item">단순하고 쉽다</div><div class="rank-item">속도가 빠르다</div><div class="rank-item">안정적·지속적 소득</div>
+    <div class="rank-item">무한누적 시스템</div><div class="rank-item">유지매출 없음</div><div class="rank-item">직급누락 없음</div><div class="rank-item">35% 현금지급 플랜</div>
+   </div></div>
+   <div class="plan-box"><h3>PV / CV</h3>
+    <p><b>PV (Position Volume)</b>: 직급 승급 기준. 본인 및 하위 회원 구독 PV를 누적하여 보는 방식으로 앱에서는 후원 하위의 본인 PV를 합산합니다.</p>
+    <p><b>CV (Commission Volume)</b>: 보너스 적용 기준. 매월 Refresh되는 현재 기수 CV로 입력합니다.</p>
+   </div>
+   <div class="plan-box"><h3>직급 기준</h3><div class="rank-grid">${ranks}</div></div>
+   <div class="plan-box"><h3>1. 추천 보너스</h3><p>MEMBER 이상 · 해당 기수 직추천 회원 매출 CV × <b>12%</b> · 추천인 수 제한 없음.</p></div>
+   <div class="plan-box"><h3>2. 후원 보너스</h3><p>MANIA 이상 · 바이너리 좌/우 현재 기수 실적 중 <b>소실적</b> 기준 · 직급별 <b>12~10%</b> · 매기 상한 5,000만원 · 상한 도달 초과분 누적 이월 · 구독기준 미충족 시 소실적 CV 소멸 규칙.</p></div>
+   <div class="plan-box"><h3>3. 추천 매칭 보너스</h3><p>DIRECTOR 이상 · 직추천 조직에서 발생한 후원보너스를 세대별 10~2% 매칭. 후원보너스 3만원 미만 구간은 압축 롤업을 적용하도록 계산합니다.</p></div>
+   <div class="plan-box"><h3>4. 품위유지 보너스</h3><table><thead><tr><th>직급</th><th>보너스</th><th>소실적 유지볼륨</th></tr></thead><tbody>
+   ${Object.entries(DIGNITY).map(([k,v])=>`<tr><td>${esc(RANKS.find(r=>r.key===k).label)}</td><td>${money(v.pay)}</td><td>${num(v.need)} CV</td></tr>`).join('')}
+   </tbody></table></div>
+   <div class="plan-box"><h3>5. 패스트 파워 보너스</h3><p>MANIA 이상. 기마감 또는 월마감 내 70만 CV 이상 신규회원 기준으로 좌·우 레그의 추천 1~2대 달성 현황을 앱에서 각각 6명 기준으로 표시합니다. 사진의 세부 단계별 현금 지급조건은 추가 자료 확인 후 정확한 자동계산으로 확장할 수 있습니다.</p></div>
+   <div class="notice">직급의 DIAMOND 이상 1:1 추천계보 승급조건은 정보로 표시합니다. 정확한 승급 판정 방식과 후원보너스 직급별 12~10% 세부표가 추가로 확인되면 공식 계산식으로 고정할 수 있습니다.</div>`;
+ }
+
+ function refOptions(excludeId){
+   let s='<option value="">직추천인 없음</option>';
+   all().filter(m=>m.id!==excludeId&&!isReferralDescendant(excludeId,m.id)).sort((a,b)=>a.name.localeCompare(b.name,'ko')).forEach(m=>s+=`<option value="${m.id}">${esc(label(m))}</option>`);
+   return s;
+ }
+ function openNew(parentId,side,auto=false){
+   const p=get(parentId);if(!p)return;const occ=child(parentId,side);if(occ)return alert(`${p.name} 회원의 ${side==='left'?'L':'R'} 자리는 이미 사용 중입니다.`);
+   formMode='new';pendingParent=parentId;pendingSide=side;
+   $('memberTitle').textContent=auto?'아래 빈자리 후원 등록':`${side==='left'?'왼쪽(L)':'오른쪽(R)'} 직하위 회원 등록`;
+   $('placementNotice').textContent=`후원 위치: ${p.name} → ${side==='left'?'왼쪽(L)':'오른쪽(R)'}`;
+   $('nameF').value='';$('codeF').value='';$('rankF').value='';$('pvF').value=0;$('cvF').value=0;$('dateF').value='';$('phoneF').value='';$('memoF').value='';
+   $('referrerF').innerHTML=refOptions(null);$('referrerF').value=selected||'';
+   $('memberDlg').showModal();setTimeout(()=>$('nameF').focus(),60);
+ }
+ function openEdit(m){
+   formMode='edit';pendingParent=m.parentId;pendingSide=m.side;
+   const p=get(m.parentId);$('memberTitle').textContent='회원 정보 수정';$('placementNotice').textContent=m.id===DB.rootId?'최상위 회원':`현재 후원 위치: ${p?.name||''} → ${m.side==='left'?'L':'R'}`;
+   $('nameF').value=m.name||'';$('codeF').value=m.code||'';$('rankF').value=m.rankOverride||'';$('pvF').value=m.pv||0;$('cvF').value=m.cv||0;$('dateF').value=m.joinDate||'';$('phoneF').value=m.phone||'';$('memoF').value=m.memo||'';
+   $('referrerF').innerHTML=refOptions(m.id);$('referrerF').value=m.referrerId||'';
+   $('memberDlg').showModal();setTimeout(()=>$('nameF').focus(),60);
+ }
+ $('memberSave').onclick=()=>{
+   const name=$('nameF').value.trim();if(!name)return alert('이름을 입력하세요.');
+   let m=formMode==='edit'?get(selected):mk();const referrerId=$('referrerF').value||null;
+   if(m&&referrerId&&(referrerId===m.id||isReferralDescendant(m.id,referrerId)))return alert('자기 자신이나 자신의 추천 하위회원을 직추천인으로 지정할 수 없습니다.');
+   Object.assign(m,{name,code:$('codeF').value.trim(),rankOverride:$('rankF').value||'',pv:Number($('pvF').value||0),cv:Number($('cvF').value||0),joinDate:$('dateF').value,phone:$('phoneF').value.trim(),memo:$('memoF').value.trim(),referrerId});
+   if(formMode==='new'){m.parentId=pendingParent;m.side=pendingSide;DB.members[m.id]=m;selected=m.id}
+   $('memberDlg').close();save();draw();setTimeout(fit,30);
+ };
+ $('memberCancel').onclick=()=>$('memberDlg').close();
+
+ $('addLeft').onclick=()=>selected?openNew(selected,'left'):alert('상위회원을 선택하세요.');
+ $('addRight').onclick=()=>selected?openNew(selected,'right'):alert('상위회원을 선택하세요.');
+ function firstEmptyBelow(startId){const q=[startId],seen=new Set();while(q.length){const id=q.shift();if(seen.has(id))continue;seen.add(id);const c=kids(id);if(!c.left)return{parentId:id,side:'left'};if(!c.right)return{parentId:id,side:'right'};q.push(c.left.id,c.right.id)}return null}
+ $('spillBtn').onclick=()=>{if(!selected)return alert('기준 회원을 선택하세요.');const slot=firstEmptyBelow(selected);if(!slot)return alert('빈자리를 찾지 못했습니다.');const p=get(slot.parentId);if(confirm(`${get(selected).name} 하위에서 가장 가까운 빈자리:\n${p.name} → ${slot.side==='left'?'L':'R'}\n여기에 신규회원을 등록할까요?`))openNew(slot.parentId,slot.side,true)};
+ $('editBtn').onclick=()=>{const m=get(selected);m?openEdit(m):alert('회원을 선택하세요.')};
+
+ function moveOptions(excludeId){return all().filter(m=>m.id!==excludeId&&!isDescendant(excludeId,m.id)).sort((a,b)=>a.name.localeCompare(b.name,'ko')).map(m=>`<option value="${m.id}">${esc(label(m))}</option>`).join('')}
+ $('moveBtn').onclick=()=>{const m=get(selected);if(!m)return alert('이동할 회원을 선택하세요.');if(m.id===DB.rootId)return alert('최상위 회원은 이동할 수 없습니다.');$('moveParentF').innerHTML=moveOptions(m.id);$('moveParentF').value=m.parentId||'';$('moveSideF').value=m.side||'left';$('moveDlg').showModal()};
+ $('moveCancel').onclick=()=>$('moveDlg').close();
+ $('moveSave').onclick=()=>{const m=get(selected),parentId=$('moveParentF').value,side=$('moveSideF').value;if(!m||!parentId)return;if(parentId===m.id||isDescendant(m.id,parentId))return alert('자기 자신이나 자신의 하위회원 밑으로 이동할 수 없습니다.');const occ=child(parentId,side);if(occ&&occ.id!==m.id)return alert('선택한 L/R 자리는 이미 사용 중입니다.');m.parentId=parentId;m.side=side;$('moveDlg').close();save();draw();setTimeout(fit,30)};
+
+ $('deleteBtn').onclick=()=>{const m=get(selected);if(!m)return alert('회원을 선택하세요.');if(m.id===DB.rootId)return alert('최상위 회원은 삭제할 수 없습니다.');const st=subtree(m.id);if(!confirm(`${m.name} 회원과 아래 후원조직 ${st.count-1}명을 함께 삭제할까요?`))return;const ids=[];function collect(id){const c=kids(id);if(c.left)collect(c.left.id);if(c.right)collect(c.right.id);ids.push(id)}collect(m.id);all().forEach(x=>{if(ids.includes(x.referrerId))x.referrerId=null});ids.forEach(id=>delete DB.members[id]);selected=DB.rootId;save();draw();setTimeout(fit,30)};
+
+ $('searchBtn').onclick=()=>{const q=$('search').value.trim().toLowerCase();if(!q)return;const m=all().find(x=>(x.name||'').toLowerCase().includes(q)||(x.code||'').toLowerCase().includes(q));if(!m)return alert('검색 결과가 없습니다.');selected=m.id;if(['bonus','table','plan'].includes(view)){view='tree';document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view==='tree'))}draw();setTimeout(fit,30);say(m.name+' 회원을 찾았습니다.')};
+ $('search').onkeydown=e=>{if(e.key==='Enter')$('searchBtn').click()};
+
+ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');view=b.dataset.view;draw();if(!['bonus','table','plan'].includes(view))setTimeout(fit,30)});
+
+ function buildRateGrid(){
+   const keys=['MANIA','DIRECTOR','EMERALD','DIAMOND','GREEN_DIAMOND','BLUE_DIAMOND','RED_DIAMOND','CROWN'];
+   $('rateGrid').innerHTML=keys.map(k=>`<span>${esc(RANKS.find(r=>r.key===k).label)}</span><input data-rate="${k}" type="number" min="0" step="0.1" value="${Number(settings.sponsorRates[k]??0)}">`).join('');
+ }
+ $('settingsBtn').onclick=()=>{$('refRateF').value=settings.refRate;$('sponsorCapF').value=settings.sponsorCap;$('compressMinF').value=settings.compressMin;buildRateGrid();$('settingsDlg').showModal()};
+ $('settingsCancel').onclick=()=>$('settingsDlg').close();
+ $('settingsSave').onclick=()=>{settings.refRate=Math.max(0,Number($('refRateF').value||0));settings.sponsorCap=Math.max(0,Number($('sponsorCapF').value||0));settings.compressMin=Math.max(0,Number($('compressMinF').value||0));document.querySelectorAll('[data-rate]').forEach(inp=>settings.sponsorRates[inp.dataset.rate]=Math.max(0,Number(inp.value||0)));$('settingsDlg').close();save();draw()};
+
+ function applyTf(){viewport.setAttribute('transform',`translate(${tf.x},${tf.y}) scale(${tf.k})`)}
+ function fit(){if(['bonus','table','plan'].includes(view))return;const list=activeLayout();if(!list.length)return;const xs=list.map(x=>x.x),ys=list.map(x=>x.y),minX=Math.min(...xs)-75,maxX=Math.max(...xs)+75,minY=Math.min(...ys)-75,maxY=Math.max(...ys)+75,w=$('stage').clientWidth,h=$('stage').clientHeight,k=Math.min(w/(maxX-minX),h/(maxY-minY),1.2);tf.k=Math.max(.11,k);tf.x=(w-(minX+maxX)*tf.k)/2;tf.y=(h-(minY+maxY)*tf.k)/2;applyTf()}
+ $('fitBtn').onclick=fit;
+ svg.onpointerdown=e=>{if(e.target.closest?.('.node'))return;drag={x:e.clientX,y:e.clientY,tx:tf.x,ty:tf.y};svg.setPointerCapture?.(e.pointerId)};
+ svg.onpointermove=e=>{if(!drag)return;tf.x=drag.tx+e.clientX-drag.x;tf.y=drag.ty+e.clientY-drag.y;applyTf()};
+ svg.onpointerup=()=>drag=null;svg.onpointercancel=()=>drag=null;
+ svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,old=tf.k,nk=Math.max(.1,Math.min(2.8,old*(e.deltaY<0?1.12:.89)));tf.x=mx-(mx-tf.x)*nk/old;tf.y=my-(my-tf.y)*nk/old;tf.k=nk;applyTf()},{passive:false});
+ svg.addEventListener('touchstart',e=>{if(e.touches.length===2){const a=e.touches[0],b=e.touches[1];pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),k:tf.k}}},{passive:false});
+ svg.addEventListener('touchmove',e=>{if(e.touches.length===2&&pinch){e.preventDefault();const a=e.touches[0],b=e.touches[1],d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);tf.k=Math.max(.1,Math.min(2.8,pinch.k*d/pinch.d));applyTf()}},{passive:false});
+ svg.addEventListener('touchend',()=>pinch=null);
+
+ $('printBtn').onclick=()=>window.print();
+ $('backupBtn').onclick=()=>{const blob=new Blob([JSON.stringify({app:'viable-binary-v6',DB,settings},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='VIABLE_바이너리계보_내백업.json';a.click();URL.revokeObjectURL(a.href)};
+ $('restoreBtn').onclick=()=>$('fileInput').click();
+ $('fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(o.DB&&o.DB.members)DB=o.DB;else if(o.members)DB=o;else throw new Error();if(o.settings)settings=Object.assign(settings,o.settings);selected=DB.rootId||all()[0]?.id||null;save();draw();setTimeout(fit,30)}catch(err){alert('백업파일 형식을 확인해 주세요.')}};r.readAsText(f,'utf-8')};
+ $('resetBtn').onclick=()=>{if(!confirm('이 기기/브라우저의 내 계보와 실적을 모두 지울까요? 삭제 전에 백업을 권장합니다.'))return;if(!confirm('정말 초기화하시겠습니까?'))return;localStorage.removeItem('viableBinaryV6_data');localStorage.removeItem('viableBinaryV6_settings');DB={version:6,rootId:null,members:{}};const r=mk({name:'나',code:'TOP-001'});DB.members[r.id]=r;DB.rootId=r.id;selected=r.id;save();draw();setTimeout(fit,30)};
+
+ let deferredInstallPrompt=null;
+ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;$('installBtn').style.display='inline-block'});
+ $('installBtn').onclick=async()=>{if(!deferredInstallPrompt){alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "앱 설치"를 선택해 주세요.');return}deferredInstallPrompt.prompt();try{await deferredInstallPrompt.userChoice}catch(e){}deferredInstallPrompt=null;$('installBtn').style.display='none'};
+ $('shareBtn').onclick=async()=>{const data={title:'VIABLE VISION FAMILY 바이너리 후원계보',text:'비아블 바이너리 후원계보 작성 프로그램입니다. 각자의 데이터는 자기 기기에 따로 저장됩니다.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(location.href);alert('공유 주소를 복사했습니다. 카카오톡이나 SNS에 붙여넣으세요.')}catch(e){prompt('아래 주소를 복사해 공유하세요.',location.href)}}};
+ if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+
+ load();selected=DB.rootId||all()[0]?.id||null;draw();setTimeout(fit,80);
+})();
+</script>
+</div>
+</body>
+</html>

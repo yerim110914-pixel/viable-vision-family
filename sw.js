@@ -1,5 +1,62 @@
-const CACHE='viable-vision-family-v13-1';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./favicon.png','./vision-logo.png'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting();});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(resp=>{const cp=resp.clone();caches.open(CACHE).then(c=>c.put(e.request,cp));return resp;}).catch(()=>caches.match('./index.html'))));});
+const CACHE='viable-vision-family-v14-1';
+
+const ASSETS=[
+  './manifest.webmanifest?v=14',
+  './icon-192.png?v=14',
+  './icon-512.png?v=14',
+  './favicon.png?v=14',
+  './vision-logo.png?v=14'
+];
+
+self.addEventListener('install',e=>{
+  e.waitUntil(
+    caches.open(CACHE).then(async c=>{
+      for(const u of ASSETS){
+        try{await c.add(u)}catch(e){}
+      }
+    })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate',e=>{
+  e.waitUntil(
+    caches.keys().then(keys=>
+      Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))
+    )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener('fetch',e=>{
+  if(e.request.method!=='GET') return;
+
+  const req=e.request;
+  const url=new URL(req.url);
+
+  if(req.mode==='navigate' ||
+     url.pathname.endsWith('/index.html') ||
+     url.pathname.endsWith('/viable-vision-family/')){
+    e.respondWith(
+      fetch(req,{cache:'no-store'})
+        .then(resp=>{
+          const cp=resp.clone();
+          caches.open(CACHE).then(c=>c.put('./index.html',cp));
+          return resp;
+        })
+        .catch(()=>caches.match('./index.html'))
+    );
+    return;
+  }
+
+  e.respondWith(
+    caches.match(req).then(cached=>{
+      if(cached) return cached;
+      return fetch(req).then(resp=>{
+        const cp=resp.clone();
+        caches.open(CACHE).then(c=>c.put(req,cp));
+        return resp;
+      });
+    })
+  );
+});

@@ -1,11 +1,11 @@
-const CACHE='viable-vision-family-v14-1';
+const CACHE='the-vision-family-v16-2';
 
 const ASSETS=[
-  './manifest.webmanifest?v=14',
-  './icon-192.png?v=14',
-  './icon-512.png?v=14',
-  './favicon.png?v=14',
-  './vision-logo.png?v=14'
+  './manifest.webmanifest?v=16.1',
+  './icon-192.png?v=16.1',
+  './icon-512.png?v=16.1',
+  './favicon.png?v=16.1',
+  './vision-logo.png?v=16.1'
 ];
 
 self.addEventListener('install',e=>{
@@ -30,7 +30,6 @@ self.addEventListener('activate',e=>{
 
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET') return;
-
   const req=e.request;
   const url=new URL(req.url);
 

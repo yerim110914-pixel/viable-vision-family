@@ -1,8 +1,8 @@
 {
-  "name": "VIABLE VISION FAMILY 바이너리 후원계보",
-  "short_name": "비아블 비전",
-  "description": "스폰서 미팅 시 사용하는 가상 바이너리 후원계보 · 추천: 홍천서석미라클샵",
-  "start_url": "./?v=14",
+  "name": "THE VISION FAMILY 바이너리 후원계보",
+  "short_name": "더비젼패밀리",
+  "description": "THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 계보도 · V16.1 보안강화형",
+  "start_url": "./?v=16.1",
   "scope": "./",
   "display": "standalone",
   "background_color": "#101828",

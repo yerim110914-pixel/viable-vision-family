@@ -3,13 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>VIABLE VISION FAMILY 바이너리 후원계보 V13</title>
-<link rel="manifest" href="manifest.webmanifest">
+<title>VIABLE VISION FAMILY 바이너리 후원계보</title>
+<link rel="manifest" href="manifest.webmanifest?v=14">
 <meta name="theme-color" content="#101828">
+
+<meta name="description" content="스폰서 미팅 시 사용하는 가상 바이너리 후원계보 · 추천: 홍천서석미라클샵">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIABLE VISION FAMILY">
+<meta property="og:title" content="VIABLE VISION FAMILY 바이너리 후원계보">
+<meta property="og:description" content="스폰서 미팅 시 사용하는 가상 계보도 · 추천: 홍천서석미라클샵">
+<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=14">
+<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=14">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VIABLE VISION FAMILY 바이너리 후원계보">
+<meta name="twitter:description" content="스폰서 미팅 시 사용하는 가상 계보도 · 추천: 홍천서석미라클샵">
+<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=14">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="VIABLE 계보도">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="icon-192.png?v=14">
+<link rel="icon" type="image/png" href="favicon.png?v=14">
 <style>
 :root{
  --bg:#f4f7fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#98a2b3;
@@ -768,7 +783,14 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;$('installBtn').style.display='inline-block'});
  $('installBtn').onclick=async()=>{if(!deferredInstallPrompt){alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "앱 설치"를 선택해 주세요.');return}deferredInstallPrompt.prompt();try{await deferredInstallPrompt.userChoice}catch(e){}deferredInstallPrompt=null;$('installBtn').style.display='none'};
  $('shareBtn').onclick=async()=>{const data={title:'VIABLE VISION FAMILY 바이너리 후원계보',text:'비아블 바이너리 후원계보 작성 프로그램입니다. 각자의 데이터는 자기 기기에 따로 저장됩니다.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(location.href);alert('공유 주소를 복사했습니다. 카카오톡이나 SNS에 붙여넣으세요.')}catch(e){prompt('아래 주소를 복사해 공유하세요.',location.href)}}};
- if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+ if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
+   window.addEventListener('load',async()=>{
+     try{
+       const reg=await navigator.serviceWorker.register('./sw.js?v=14',{updateViaCache:'none'});
+       await reg.update();
+     }catch(e){}
+   });
+ }
 
  load();selected=DB.rootId||all()[0]?.id||null;syncDetailToggle();draw();setTimeout(fit,80);
 })();

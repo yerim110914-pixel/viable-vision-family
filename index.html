@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>VIABLE VISION FAMILY 바이너리 후원계보 V10</title>
+<title>VIABLE VISION FAMILY 바이너리 후원계보 V13</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#101828">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -92,12 +92,83 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 #appRoot.locked{display:none!important}
 .activation-chip{font-size:11px;background:#344054;color:#fff;padding:5px 8px;border-radius:999px;white-space:nowrap}
 
+
+/* V11: 스마트폰 회원 상세창 축소 + 오늘 숨김 + ON/OFF */
+.panel-head{display:flex;align-items:center;gap:8px;justify-content:space-between;position:sticky;top:-11px;background:rgba(255,255,255,.98);padding:7px 0 6px;z-index:2;border-bottom:1px solid #eef2f6;margin-bottom:6px}
+.panel-head h3{margin:0;font-size:14px}
+.panel-close{border:0;background:#eef2f6;color:#344054;border-radius:999px;width:30px;height:30px;padding:0;font-size:18px;line-height:30px;font-weight:800}
+.panel-actions{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 5px}
+.panel-actions button{border:1px solid #d0d5dd;background:#f8fafc;color:#344054;border-radius:8px;padding:6px 8px;font-size:10px;font-weight:700}
+#detailToggleBtn.detail-off{background:#667085;color:#fff}
+#detailToggleBtn.detail-on{background:#e8f5ee;color:#067647;border:1px solid #abefc6}
+#detailToggleBtn.detail-today{background:#fff4e5;color:#b54708;border:1px solid #fedf89}
+@media(max-width:900px), (pointer:coarse){
+  .panel{
+    display:block;
+    position:fixed;
+    z-index:9000;
+    left:12px;
+    right:12px;
+    top:auto;
+    bottom:12px;
+    width:auto;
+    max-height:43vh;
+    overflow:auto;
+    padding:9px 10px;
+    border-radius:16px;
+    font-size:10.5px;
+    box-shadow:0 12px 40px rgba(16,24,40,.30);
+    background:rgba(255,255,255,.985)
+  }
+  .panel .kv{gap:3px 7px;line-height:1.25}
+  .panel .badge{font-size:9px;padding:2px 6px}
+  .panel .small{font-size:9px;line-height:1.35}
+  .panel-head{top:-9px;padding-top:5px}
+  .panel-head h3{font-size:13px}
+  .panel-actions{margin:5px 0 3px}
+  .panel-actions button{padding:5px 7px;font-size:9.5px}
+}
+
+
+/* V12: 더비젼패밀리 로고 워터마크 */
+.gate-card,
+.panel{position:relative;overflow:hidden}
+.gate-card::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:url('vision-logo.png');
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:68%;
+  opacity:.055;
+  pointer-events:none;
+  filter:grayscale(8%);
+}
+.gate-card > *{position:relative;z-index:1}
+
+.panel::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:url('vision-logo.png');
+  background-repeat:no-repeat;
+  background-position:center 58%;
+  background-size:58%;
+  opacity:.045;
+  pointer-events:none;
+}
+.panel > *{position:relative;z-index:1}
+
+@media(max-width:900px), (pointer:coarse){
+  .gate-card::before{background-size:74%;opacity:.05}
+  .panel::before{background-size:62%;opacity:.042}
+}
+
 </style>
 </head>
 <body>
 <div id="accessGate">
   <div class="gate-card">
-    <img class="gate-logo" src="icon-192.png" alt="VIABLE VISION FAMILY">
+    <img class="gate-logo" src="vision-logo.png" alt="THE VISION">
     <div class="gate-title">VIABLE VISION FAMILY</div>
     <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.</div>
 
@@ -152,6 +223,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
   <button class="btn" id="searchBtn">검색</button>
   <button class="btn" id="fitBtn">전체보기</button>
   <button class="btn purple" id="settingsBtn">보상설정</button>
+  <button class="btn detail-on" id="detailToggleBtn">상세창 ON</button>
   <span class="status" id="status">준비됨</span>
 </div>
 
@@ -318,6 +390,33 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  const $=id=>document.getElementById(id);
  const svg=$('svg'),viewport=$('viewport'),links=$('links'),nodes=$('nodes'),panel=$('panel'),contentView=$('contentView');
  let DB={version:6,rootId:null,members:{}},selected=null,view='tree',formMode='edit',pendingParent=null,pendingSide=null;
+ let detailClosedThisSelection=false;
+ const DETAIL_PREF_KEY='viableVisionV11_detailPanel';
+ function localDayKey(){
+   const d=new Date();
+   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+ }
+ function getDetailPref(){
+   try{return Object.assign({enabled:true,hideDate:''},JSON.parse(localStorage.getItem(DETAIL_PREF_KEY)||'{}'))}
+   catch(e){return {enabled:true,hideDate:''}}
+ }
+ function setDetailPref(p){localStorage.setItem(DETAIL_PREF_KEY,JSON.stringify(p))}
+ function detailHiddenToday(){const p=getDetailPref();return p.hideDate===localDayKey()}
+ function shouldShowDetail(){const p=getDetailPref();return !!p.enabled && !detailHiddenToday() && !detailClosedThisSelection}
+ function syncDetailToggle(){
+   const b=document.getElementById('detailToggleBtn');if(!b)return;
+   const p=getDetailPref();
+   b.classList.remove('detail-on','detail-off','detail-today');
+   if(!p.enabled){b.textContent='상세창 OFF';b.classList.add('detail-off')}
+   else if(detailHiddenToday()){b.textContent='상세창 오늘숨김';b.classList.add('detail-today')}
+   else{b.textContent='상세창 ON';b.classList.add('detail-on')}
+ }
+ function applyDetailVisibility(){
+   if(!panel)return;
+   const isContent=['bonus','table','plan'].includes(view);
+   panel.style.display=(!isContent && shouldShowDetail())?'block':'none';
+   syncDetailToggle();
+ }
  let tf={x:20,y:20,k:1},drag=null,pinch=null;
 
  const RANKS=[
@@ -484,7 +583,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
    const r=document.createElementNS('http://www.w3.org/2000/svg','text');r.setAttribute('class','sub');r.setAttribute('y','2');r.textContent=rankOf(d.m.id).label.slice(0,14);g.appendChild(r);
    const p=document.createElementNS('http://www.w3.org/2000/svg','text');p.setAttribute('class','sub');p.setAttribute('y','18');p.textContent='PV '+num(groupPV(d.m.id));g.appendChild(p);
    const v=document.createElementNS('http://www.w3.org/2000/svg','text');v.setAttribute('class','sub');v.setAttribute('y','32');v.textContent='CV '+num(d.m.cv);g.appendChild(v);
-   g.onclick=e=>{e.stopPropagation();selected=d.m.id;draw();say(d.m.name+' 선택')};
+   g.onclick=e=>{e.stopPropagation();detailClosedThisSelection=false;selected=d.m.id;draw();say(d.m.name+' 선택')};
    g.ondblclick=e=>{e.stopPropagation();selected=d.m.id;openEdit(d.m)};
    nodes.appendChild(g);
  }
@@ -492,7 +591,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  function draw(){
    const isContent=['bonus','table','plan'].includes(view);
    svg.style.display=isContent?'none':'block';contentView.style.display=isContent?'block':'none';
-   panel.style.display=isContent?'none':'block';$('hint').style.display=isContent?'none':'block';
+   $('hint').style.display=isContent?'none':'block';applyDetailVisibility();
    if(view==='bonus'){drawBonus();return}
    if(view==='table'){drawTable();return}
    if(view==='plan'){drawPlan();return}
@@ -505,8 +604,9 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  function updatePanel(){
    const m=get(selected)||get(DB.rootId);if(!m){panel.innerHTML='회원 없음';return}
    const r=rankOf(m.id),s=calcSides(m.id),sp=sponsorBase(m.id),fp=fastPowerStatus(m.id),ref=get(m.referrerId),par=get(m.parentId),c=kids(m.id);
-   panel.innerHTML=`<h3>${esc(m.name)}</h3>
+   panel.innerHTML=`<div class="panel-head"><h3>${esc(m.name)}</h3><button class="panel-close" id="panelCloseBtn" title="닫기">×</button></div>
     <span class="badge">${esc(r.label)}</span><span class="badge">${esc(m.code||'번호 없음')}</span>
+    <div class="panel-actions"><button id="panelHideTodayBtn">오늘 하루 보지 않기</button></div>
     <div class="kv" style="margin-top:8px">
       <span>직추천인</span><b>${esc(ref?.name||'없음')}</b>
       <span>후원 상위</span><b>${esc(par?.name||'최상위')}</b>
@@ -528,6 +628,11 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
     <div class="small" style="margin-top:7px">패스트 파워: 좌 ${fp.L}/6 · 우 ${fp.R}/6 ${fp.qualified?'✓ 달성조건 충족':'(진행중)'}</div>
     ${sp.capCarryCV>0?`<div class="small">후원보너스 상한 초과분 참고 이월 CV: ${num(sp.capCarryCV)}</div>`:''}
     <div class="small warn" style="margin-top:7px">※ 후원보너스 직급별 요율은 제공 사진에 12~10% 범위만 보여 설정값을 사용합니다.</div>`;
+   const closeBtn=panel.querySelector('#panelCloseBtn');
+   if(closeBtn)closeBtn.onclick=()=>{detailClosedThisSelection=true;applyDetailVisibility()};
+   const hideTodayBtn=panel.querySelector('#panelHideTodayBtn');
+   if(hideTodayBtn)hideTodayBtn.onclick=()=>{const p=getDetailPref();p.enabled=true;p.hideDate=localDayKey();setDetailPref(p);detailClosedThisSelection=true;applyDetailVisibility();say('회원 상세창을 오늘 하루 숨겼습니다.')};
+   applyDetailVisibility();
  }
 
  function drawBonus(){
@@ -622,7 +727,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 
  $('deleteBtn').onclick=()=>{const m=get(selected);if(!m)return alert('회원을 선택하세요.');if(m.id===DB.rootId)return alert('최상위 회원은 삭제할 수 없습니다.');const st=subtree(m.id);if(!confirm(`${m.name} 회원과 아래 후원조직 ${st.count-1}명을 함께 삭제할까요?`))return;const ids=[];function collect(id){const c=kids(id);if(c.left)collect(c.left.id);if(c.right)collect(c.right.id);ids.push(id)}collect(m.id);all().forEach(x=>{if(ids.includes(x.referrerId))x.referrerId=null});ids.forEach(id=>delete DB.members[id]);selected=DB.rootId;save();draw();setTimeout(fit,30)};
 
- $('searchBtn').onclick=()=>{const q=$('search').value.trim().toLowerCase();if(!q)return;const m=all().find(x=>(x.name||'').toLowerCase().includes(q)||(x.code||'').toLowerCase().includes(q));if(!m)return alert('검색 결과가 없습니다.');selected=m.id;if(['bonus','table','plan'].includes(view)){view='tree';document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view==='tree'))}draw();setTimeout(fit,30);say(m.name+' 회원을 찾았습니다.')};
+ $('searchBtn').onclick=()=>{const q=$('search').value.trim().toLowerCase();if(!q)return;const m=all().find(x=>(x.name||'').toLowerCase().includes(q)||(x.code||'').toLowerCase().includes(q));if(!m)return alert('검색 결과가 없습니다.');detailClosedThisSelection=false;selected=m.id;if(['bonus','table','plan'].includes(view)){view='tree';document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view==='tree'))}draw();setTimeout(fit,30);say(m.name+' 회원을 찾았습니다.')};
  $('search').onkeydown=e=>{if(e.key==='Enter')$('searchBtn').click()};
 
  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');view=b.dataset.view;draw();if(!['bonus','table','plan'].includes(view))setTimeout(fit,30)});
@@ -632,6 +737,13 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
    $('rateGrid').innerHTML=keys.map(k=>`<span>${esc(RANKS.find(r=>r.key===k).label)}</span><input data-rate="${k}" type="number" min="0" step="0.1" value="${Number(settings.sponsorRates[k]??0)}">`).join('');
  }
  $('settingsBtn').onclick=()=>{$('refRateF').value=settings.refRate;$('sponsorCapF').value=settings.sponsorCap;$('compressMinF').value=settings.compressMin;buildRateGrid();$('settingsDlg').showModal()};
+ $('detailToggleBtn').onclick=()=>{
+   const p=getDetailPref();
+   if(!p.enabled){p.enabled=true;p.hideDate='';detailClosedThisSelection=false}
+   else if(p.hideDate===localDayKey()){p.enabled=true;p.hideDate='';detailClosedThisSelection=false}
+   else{p.enabled=false;detailClosedThisSelection=true}
+   setDetailPref(p);applyDetailVisibility();
+ };
  $('settingsCancel').onclick=()=>$('settingsDlg').close();
  $('settingsSave').onclick=()=>{settings.refRate=Math.max(0,Number($('refRateF').value||0));settings.sponsorCap=Math.max(0,Number($('sponsorCapF').value||0));settings.compressMin=Math.max(0,Number($('compressMinF').value||0));document.querySelectorAll('[data-rate]').forEach(inp=>settings.sponsorRates[inp.dataset.rate]=Math.max(0,Number(inp.value||0)));$('settingsDlg').close();save();draw()};
 
@@ -658,7 +770,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  $('shareBtn').onclick=async()=>{const data={title:'VIABLE VISION FAMILY 바이너리 후원계보',text:'비아블 바이너리 후원계보 작성 프로그램입니다. 각자의 데이터는 자기 기기에 따로 저장됩니다.',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(location.href);alert('공유 주소를 복사했습니다. 카카오톡이나 SNS에 붙여넣으세요.')}catch(e){prompt('아래 주소를 복사해 공유하세요.',location.href)}}};
  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 
- load();selected=DB.rootId||all()[0]?.id||null;draw();setTimeout(fit,80);
+ load();selected=DB.rootId||all()[0]?.id||null;syncDetailToggle();draw();setTimeout(fit,80);
 })();
 </script>
 </div>

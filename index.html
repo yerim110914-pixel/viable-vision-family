@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>THE VISION FAMILY 바이너리 후원계보</title>
-<link rel="manifest" href="manifest.webmanifest?v=16.1">
+<link rel="manifest" href="manifest.webmanifest?v=16.3">
 <meta name="theme-color" content="#101828">
 
 <meta name="description" content="THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 계보도 · 실제 수익을 보장하지 않습니다.">
@@ -12,19 +12,19 @@
 <meta property="og:site_name" content="THE VISION FAMILY">
 <meta property="og:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta property="og:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.1">
-<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.1">
+<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.3">
+<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.3">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta name="twitter:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.1">
+<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.3">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="더비젼패밀리">
-<link rel="apple-touch-icon" href="icon-192.png?v=16.1">
-<link rel="icon" type="image/png" href="favicon.png?v=16.1">
+<link rel="apple-touch-icon" href="icon-192.png?v=16.3">
+<link rel="icon" type="image/png" href="favicon.png?v=16.3">
 <style>
 :root{
  --bg:#f4f7fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#98a2b3;
@@ -227,6 +227,59 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 .gate-btn:disabled{opacity:.55;cursor:not-allowed}
 .security-countdown{font-weight:800;color:#b42318}
 
+
+/* V16.2 스마트폰 활성화화면 개선 */
+.gate-card{
+  max-height:calc(100dvh - 24px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.legal-agree-top{
+  margin-top:12px;
+  border:2px solid #f6c344;
+  background:#fff9db;
+  color:#533800;
+  font-size:12px;
+}
+.legal-agree-top input{
+  width:22px;
+  height:22px;
+  min-width:22px;
+  accent-color:#101828;
+}
+@media(max-width:760px){
+  #accessGate{
+    align-items:flex-start;
+    overflow-y:auto;
+    padding:10px;
+  }
+  .gate-card{
+    margin:0 auto;
+    max-height:none;
+    min-height:auto;
+    border-radius:16px;
+    padding:16px;
+  }
+  .gate-logo{width:78px;height:78px;margin-bottom:8px}
+  .gate-title{font-size:19px}
+  .gate-sub{margin-bottom:10px}
+  .gate-field{margin:8px 0}
+  .gate-warning{font-size:10.5px}
+  .security-box{font-size:10px}
+  .legal-agree-top{
+    position:relative;
+    font-size:11.5px;
+    padding:10px;
+  }
+}
+
+
+/* V16.3 체크박스 위치 조정 */
+.gate-btn + .legal-agree-top{
+  margin-top:10px;
+  margin-bottom:2px;
+}
+
 </style>
 </head>
 <body>
@@ -234,7 +287,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
   <div class="gate-card">
     <img class="gate-logo" src="vision-logo.png" alt="THE VISION">
     <div class="gate-title">THE VISION FAMILY</div>
-    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.1 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
+    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.3 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
 
     <div class="gate-field">
       <label>추천</label>
@@ -247,9 +300,13 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
       <input id="accessPassword" type="password" autocomplete="current-password" placeholder="패스워드 입력">
     </div>
     <button class="gate-btn" id="activateAppBtn">앱 활성화</button>
+    <label class="legal-agree legal-agree-top">
+      <input type="checkbox" id="legalAgree">
+      <span><b>필수 확인</b> · 아래 비공식 앱·가상 시뮬레이션·개인정보 고지를 확인했습니다.</span>
+    </label>
 
     <div class="security-box" id="securityInfo">
-      <b>🔐 V16.1 보안강화</b><br>
+      <b>🔐 V16.3 보안강화</b><br>
       • 비밀번호는 원문으로 저장하지 않고 PBKDF2 검증값으로 확인합니다.<br>
       • 5회 연속 오류 시 이 기기에서 15분 동안 로그인이 잠깁니다.<br>
       • 30분 동안 사용하지 않으면 자동 잠금됩니다.<br>
@@ -270,10 +327,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
       실제 회원의 이름·회원번호·전화번호 등 개인정보는 본인의 동의 없이 입력·공유하지 마십시오.
       스폰서 미팅에서는 가명 또는 예시 이름 사용을 권장합니다.
     </div>
-    <label class="legal-agree">
-      <input type="checkbox" id="legalAgree">
-      <span>위 비공식 앱·가상 시뮬레이션·개인정보 고지를 확인했습니다.</span>
-    </label>
+
   </div>
 </div>
 <div id="appRoot" class="locked">
@@ -413,7 +467,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
     </div>
     <div class="legal-section">
       <h4>6. 접근보안 안내</h4>
-      <p>V16.1은 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
+      <p>V16.3는 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
       <p>다만 GitHub Pages는 정적 웹호스팅이므로 전문적인 소스 분석이나 브라우저 저장소 조작까지 차단하는 서버 인증과 동일한 보안 수준은 아닙니다. 기밀·민감정보 보관용으로 사용하지 마십시오.</p>
     </div>
     <div class="notice">이 고지는 일반적인 위험 완화를 위한 안내이며 개별 사안에 대한 법률자문 또는 적법성 보증을 의미하지 않습니다.</div>
@@ -1048,7 +1102,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
    window.addEventListener('load',async()=>{
      try{
-       const reg=await navigator.serviceWorker.register('./sw.js?v=16.1',{updateViaCache:'none'});
+       const reg=await navigator.serviceWorker.register('./sw.js?v=16.3',{updateViaCache:'none'});
        await reg.update();
      }catch(e){}
    });

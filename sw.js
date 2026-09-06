@@ -1,10 +1,10 @@
-const CACHE='the-vision-family-v16-9-1';
+const CACHE='the-vision-family-v16-10-1';
 const ASSETS=[
-  './manifest.webmanifest?v=16.9',
-  './icon-192.png?v=16.9',
-  './icon-512.png?v=16.9',
-  './favicon.png?v=16.9',
-  './vision-logo.png?v=16.9'
+  './manifest.webmanifest?v=16.10',
+  './icon-192.png?v=16.10',
+  './icon-512.png?v=16.10',
+  './favicon.png?v=16.10',
+  './vision-logo.png?v=16.10'
 ];
 
 self.addEventListener('install',e=>{

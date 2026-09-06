@@ -1,8 +1,8 @@
 {
   "name": "THE VISION FAMILY 바이너리 후원계보",
   "short_name": "더비젼패밀리",
-  "description": "THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 후원계보 · V16.9",
-  "start_url": "./?v=16.9",
+  "description": "THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 후원계보 · V16.10 고지문 10일 숨김",
+  "start_url": "./?v=16.10",
   "scope": "./",
   "display": "standalone",
   "background_color": "#101828",

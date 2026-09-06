@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=5,user-scalable=yes">
 <title>THE VISION FAMILY 바이너리 후원계보</title>
-<link rel="manifest" href="manifest.webmanifest?v=16.10">
+<link rel="manifest" href="manifest.webmanifest?v=16.13">
 <meta name="theme-color" content="#101828">
 
 <meta name="description" content="THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 계보도 · 실제 수익을 보장하지 않습니다.">
@@ -12,19 +12,19 @@
 <meta property="og:site_name" content="THE VISION FAMILY">
 <meta property="og:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta property="og:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.10">
-<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.10">
+<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.13">
+<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.13">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta name="twitter:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.10">
+<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.13">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="더비젼패밀리">
-<link rel="apple-touch-icon" href="icon-192.png?v=16.10">
-<link rel="icon" type="image/png" href="favicon.png?v=16.10">
+<link rel="apple-touch-icon" href="icon-192.png?v=16.13">
+<link rel="icon" type="image/png" href="favicon.png?v=16.13">
 <style>
 :root{
  --bg:#f4f7fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#98a2b3;
@@ -317,11 +317,268 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 }
 
 
-/* V16.10 자유 스크롤·드래그 이동 */
+/* V16.13 자유 스크롤·드래그 이동 */
 #svg{cursor:grab;touch-action:none;overscroll-behavior:none}
 #svg.panning{cursor:grabbing}
 #stage{overscroll-behavior:contain}
 .pan-help{font-weight:700;color:#344054}
+
+
+/* V16.13 고지문 전체 닫기 */
+.app-notice-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.notice-close-all-icon{
+  width:38px;height:38px;min-width:38px;padding:0;border-radius:999px;
+  background:#eef2f6;color:#667085;border:1px solid #d0d5dd;
+  font-size:20px;font-weight:900;line-height:38px;text-align:center;
+}
+.notice-close-all-icon.ready{
+  background:#101828;color:#fff;border-color:#101828;
+  box-shadow:0 3px 10px rgba(16,24,40,.18);
+}
+.notice-close-all-icon:disabled{opacity:.38;cursor:not-allowed}
+.notice-close-all-btn{
+  width:100%;margin-top:2px;padding:11px 12px;border-radius:12px;
+  background:#101828;color:#fff;font-size:12px;font-weight:900;
+}
+.notice-close-all-btn:disabled{
+  background:#e4e7ec;color:#98a2b3;cursor:not-allowed;
+}
+@media(max-width:760px){
+  .notice-close-all-icon{width:36px;height:36px;min-width:36px;font-size:19px;line-height:36px}
+  .notice-close-all-btn{font-size:11.5px;padding:10px}
+}
+
+
+/* V16.13 모바일 메뉴바 축소 + 페이지 확대/축소 */
+html,body{touch-action:pan-x pan-y pinch-zoom}
+.header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.header-actions button,.header-actions .activation-chip{white-space:nowrap}
+.scroll-row-hidebar{scrollbar-width:none}
+.scroll-row-hidebar::-webkit-scrollbar{display:none}
+
+@media(max-width:760px){
+  body{overflow-x:hidden}
+
+  header{
+    padding:6px 7px;
+    display:block;
+  }
+  header h1{
+    width:auto;
+    margin:0 0 5px 0;
+    font-size:14px;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .header-actions{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:4px;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:1px;
+  }
+  .header-actions::-webkit-scrollbar{display:none}
+  .header-actions .btn,
+  .header-actions .legal-link{
+    flex:0 0 auto;
+    padding:5px 7px;
+    border-radius:7px;
+    font-size:9.5px;
+    line-height:1.15;
+    white-space:nowrap;
+  }
+  .activation-chip{
+    flex:0 0 auto;
+    font-size:8.5px;
+    padding:4px 6px;
+  }
+
+  .tabs{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:4px;
+    padding:5px 6px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex:0 0 auto;
+    padding:6px 8px;
+    border-radius:7px;
+    font-size:10.5px;
+    line-height:1.15;
+  }
+
+  .toolbar{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:4px;
+    padding:5px 6px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .toolbar::-webkit-scrollbar{display:none}
+  .toolbar button{
+    flex:0 0 auto;
+    padding:6px 7px;
+    border-radius:7px;
+    font-size:10.5px;
+    line-height:1.15;
+    white-space:nowrap;
+  }
+  .toolbar input{
+    flex:0 0 145px;
+    min-width:145px;
+    width:145px;
+    padding:6px 7px;
+    font-size:10.5px;
+  }
+  .status{
+    flex:0 0 auto;
+    width:auto;
+    margin-left:0;
+    font-size:9.5px;
+    white-space:nowrap;
+  }
+
+  .app-notice-wrap{padding:7px 8px}
+  .app-notice-title{font-size:10px}
+  .notice-open-btn{padding:8px 9px}
+  .notice-open-btn span{font-size:11px}
+  .notice-open-btn small{font-size:9.5px}
+  .notice-status-badge{min-width:54px;font-size:9px;padding:5px 6px}
+
+  /* 메뉴가 작아진 만큼 계보도 영역 확대 */
+  #stage{
+    height:calc(100dvh - 155px);
+    min-height:430px;
+  }
+}
+
+/* 모바일/PC 공통: 메뉴 영역에서는 브라우저 기본 확대/축소 허용,
+   계보도 SVG 안에서는 기존 전용 드래그/핀치 확대를 그대로 사용 */
+header,.tabs,.toolbar,.app-notice-wrap{
+  touch-action:pan-x pan-y pinch-zoom;
+}
+
+
+/* V16.13 계보도 전체화면/나가기 아이콘 */
+.tree-view-controls{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:8;
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+.tree-icon-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 9px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  background:rgba(255,255,255,.96);
+  color:#182230;
+  box-shadow:0 3px 12px rgba(16,24,40,.12);
+  font-size:11px;
+  font-weight:900;
+  backdrop-filter:blur(4px);
+}
+.tree-icon-btn svg{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+}
+.tree-icon-btn:active{transform:scale(.97)}
+.tree-exit-btn{
+  display:none;
+  background:#101828;
+  border-color:#101828;
+  color:#fff;
+}
+
+/* 전체화면 계보 작성 모드 */
+body.tree-fullscreen-mode{
+  overflow:hidden;
+  background:#f4f7fb;
+}
+body.tree-fullscreen-mode header,
+body.tree-fullscreen-mode .tabs,
+body.tree-fullscreen-mode .app-notice-wrap{
+  display:none!important;
+}
+body.tree-fullscreen-mode .toolbar{
+  position:relative;
+  z-index:10;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  padding:5px 7px;
+  gap:4px;
+  min-height:44px;
+  scrollbar-width:none;
+}
+body.tree-fullscreen-mode .toolbar::-webkit-scrollbar{display:none}
+body.tree-fullscreen-mode .toolbar button{
+  flex:0 0 auto;
+  padding:6px 8px;
+  font-size:10.5px;
+  white-space:nowrap;
+}
+body.tree-fullscreen-mode .toolbar input{
+  flex:0 0 145px;
+  min-width:145px;
+}
+body.tree-fullscreen-mode #stage{
+  height:calc(100dvh - 44px)!important;
+  min-height:0!important;
+}
+body.tree-fullscreen-mode .tree-view-controls{
+  top:8px;
+  left:8px;
+}
+body.tree-fullscreen-mode #treeFullscreenBtn{display:none}
+body.tree-fullscreen-mode #treeFullscreenExitBtn{display:inline-flex}
+body.tree-fullscreen-mode .hint{bottom:8px}
+
+/* 일반 화면에서는 전체화면 버튼만 */
+body:not(.tree-fullscreen-mode) #treeFullscreenBtn{display:inline-flex}
+body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
+
+@media(max-width:760px){
+  .tree-view-controls{
+    top:7px;
+    left:7px;
+    gap:5px;
+  }
+  .tree-icon-btn{
+    padding:6px 7px;
+    border-radius:9px;
+    font-size:9.5px;
+    gap:4px;
+  }
+  .tree-icon-btn svg{
+    width:16px;
+    height:16px;
+    flex-basis:16px;
+  }
+  body.tree-fullscreen-mode .toolbar{
+    min-height:40px;
+    padding:4px 5px;
+  }
+  body.tree-fullscreen-mode #stage{
+    height:calc(100dvh - 40px)!important;
+  }
+}
 
 </style>
 </head>
@@ -330,7 +587,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
   <div class="gate-card">
     <img class="gate-logo" src="vision-logo.png" alt="THE VISION">
     <div class="gate-title">THE VISION FAMILY</div>
-    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.10 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
+    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.13 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
 
     <div class="gate-field">
       <label>추천</label>
@@ -349,7 +606,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
     </label>
 
     <div class="security-box" id="securityInfo">
-      <b>🔐 V16.10 보안강화</b><br>
+      <b>🔐 V16.13 보안강화</b><br>
       • 비밀번호는 원문으로 저장하지 않고 PBKDF2 검증값으로 확인합니다.<br>
       • 5회 연속 오류 시 이 기기에서 15분 동안 로그인이 잠깁니다.<br>
       • 30분 동안 사용하지 않으면 자동 잠금됩니다.<br>
@@ -377,15 +634,17 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 
 <header>
   <h1><span class="brand">THE VISION FAMILY</span> 바이너리 후원계보</h1>
-  <span class="activation-chip" id="activationChip">미인증</span>
-  <button class="btn" id="lockAppBtn">이 기기 잠금</button>
-  <button class="legal-link" id="legalBtn">법적·개인정보 고지</button>
-  <button class="btn green" id="shareBtn">카톡·SNS 공유</button>
-  <button class="btn" id="installBtn" style="display:none">홈화면 설치</button>
-  <button class="btn" id="printBtn">인쇄 / PDF</button>
-  <button class="btn" id="backupBtn">내 계보 백업</button>
-  <button class="btn" id="restoreBtn">내 계보 복원</button>
-  <button class="btn danger" id="resetBtn">내 데이터 초기화</button>
+  <div class="header-actions">
+    <span class="activation-chip" id="activationChip">미인증</span>
+    <button class="btn" id="lockAppBtn">이 기기 잠금</button>
+    <button class="legal-link" id="legalBtn">법적·개인정보 고지</button>
+    <button class="btn green" id="shareBtn">카톡·SNS 공유</button>
+    <button class="btn" id="installBtn" style="display:none">홈화면 설치</button>
+    <button class="btn" id="printBtn">인쇄 / PDF</button>
+    <button class="btn" id="backupBtn">내 계보 백업</button>
+    <button class="btn" id="restoreBtn">내 계보 복원</button>
+    <button class="btn danger" id="resetBtn">내 데이터 초기화</button>
+  </div>
   <input id="fileInput" type="file" accept=".json" hidden>
 </header>
 
@@ -412,8 +671,11 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
   <span class="status" id="status">준비됨</span>
 </div>
 
-<div class="app-notice-wrap">
-  <div class="app-notice-title">다음 고지문은 각각 눌러 팝업에서 확인 체크 후 닫아주세요.</div>
+<div class="app-notice-wrap" id="appNoticeWrap">
+  <div class="app-notice-head">
+    <div class="app-notice-title">다음 고지문은 각각 눌러 팝업에서 확인 체크 후 닫아주세요.</div>
+    <button type="button" class="notice-close-all-icon" id="appNoticeCloseAll" title="전체 닫기" aria-label="전체 닫기" disabled>✕</button>
+  </div>
   <div class="notice-actions">
     <button type="button" class="notice-open-btn" id="appStorageBtn">
       <span>① 각자 저장 방식 안내
@@ -440,14 +702,31 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
       <b class="notice-status-badge" id="appInstallStatus">미확인</b>
     </button>
   </div>
-  <div class="notice-summary" id="appNoticeSummary">다음 고지문 4가지를 각각 눌러 팝업에서 확인 체크 후 닫아주세요. 확인한 항목은 10일 동안 보이지 않습니다.</div>
+  <div class="notice-summary" id="appNoticeSummary">고지문 4가지를 모두 확인하면 오른쪽 위 ✕ 전체 닫기 아이콘이 활성화됩니다.</div>
+  <button type="button" class="notice-close-all-btn" id="appNoticeCloseAllBtn" disabled>
+    ✓ 4개 고지문 확인 후 전체 닫기 · 10일간 숨김
+  </button>
 </div>
 
 <div id="stage">
+  <div class="tree-view-controls" id="treeViewControls">
+    <button type="button" class="tree-icon-btn" id="treeFullscreenBtn" title="계보도 전체화면" aria-label="계보도 전체화면">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>전체화면</span>
+    </button>
+    <button type="button" class="tree-icon-btn tree-exit-btn" id="treeFullscreenExitBtn" title="전체화면 나가기" aria-label="전체화면 나가기">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 4H4v5M20 9V4h-5M15 20h5v-5M4 15v5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>나가기</span>
+    </button>
+  </div>
   <svg id="svg"><g id="viewport"><g id="links"></g><g id="nodes"></g></g></svg>
   <div id="contentView" class="contentView"></div>
   <div class="panel" id="panel"></div>
-  <div class="hint" id="hint">후원계보는 한 회원당 L 1명 + R 1명, 최대 2명입니다.</div>
+  <div class="hint" id="hint">후원계보는 한 회원당 L 1명 + R 1명, 최대 2명입니다. · 두 손가락 확대/축소 · 한 손가락 이동</div>
 </div>
 
 <dialog id="memberDlg">
@@ -595,7 +874,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
     </div>
     <div class="legal-section">
       <h4>6. 접근보안 안내</h4>
-      <p>V16.10는 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
+      <p>V16.13는 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
       <p>다만 GitHub Pages는 정적 웹호스팅이므로 전문적인 소스 분석이나 브라우저 저장소 조작까지 차단하는 서버 인증과 동일한 보안 수준은 아닙니다. 기밀·민감정보 보관용으로 사용하지 마십시오.</p>
     </div>
     <div class="notice">이 고지는 일반적인 위험 완화를 위한 안내이며 개별 사안에 대한 법률자문 또는 적법성 보증을 의미하지 않습니다.</div>
@@ -634,8 +913,9 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  const SESSION_MS=24*60*60*1000;
  let authBusy=false;
  let lastActivityWrite=0;
- const APP_NOTICE_HIDE_KEY="theVision_appNotices_hiddenUntil_v1";
- const APP_NOTICE_HIDE_MS=10*24*60*60*1000;
+ const appNoticeState={storage:false,official:false,privacy:false,install:false};
+ const APP_NOTICE_ALL_HIDE_KEY="theVision_allNotices_hiddenUntil_v1";
+ const APP_NOTICE_ALL_HIDE_MS=10*24*60*60*1000;
  const APP_NOTICE_DEFS=[
    ["storage","appStorageBtn","appStorageStatus"],
    ["official","appOfficialBtn","appOfficialStatus"],
@@ -643,57 +923,57 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
    ["install","appInstallBtn","appInstallStatus"]
  ];
 
- function getAppNoticeHiddenMap(){
-   try{
-     const v=JSON.parse(localStorage.getItem(APP_NOTICE_HIDE_KEY)||"{}");
-     return v&&typeof v==="object"?v:{};
-   }catch(e){return {}}
+ function appNoticesAllConfirmed(){
+   return APP_NOTICE_DEFS.every(([key])=>!!appNoticeState[key]);
  }
- function setAppNoticeHiddenMap(v){
-   localStorage.setItem(APP_NOTICE_HIDE_KEY,JSON.stringify(v));
+ function appNoticesHiddenUntil(){
+   return Number(localStorage.getItem(APP_NOTICE_ALL_HIDE_KEY)||0);
  }
- function isAppNoticeHidden(key){
-   const map=getAppNoticeHiddenMap();
-   const until=Number(map[key]||0);
-   if(until>Date.now()) return true;
-   if(until){
-     delete map[key];
-     setAppNoticeHiddenMap(map);
-   }
+ function appNoticesAreHidden(){
+   const until=appNoticesHiddenUntil();
+   if(until>Date.now())return true;
+   if(until)localStorage.removeItem(APP_NOTICE_ALL_HIDE_KEY);
    return false;
  }
- function hideAppNoticeFor10Days(key){
-   const map=getAppNoticeHiddenMap();
-   map[key]=Date.now()+APP_NOTICE_HIDE_MS;
-   setAppNoticeHiddenMap(map);
+ function hideAllAppNoticesFor10Days(){
+   if(!appNoticesAllConfirmed())return;
+   localStorage.setItem(APP_NOTICE_ALL_HIDE_KEY,String(Date.now()+APP_NOTICE_ALL_HIDE_MS));
+   const wrap=document.getElementById("appNoticeWrap");
+   if(wrap)wrap.style.display="none";
  }
 
  function updateAppNoticeUI(){
-   let visibleCount=0;
-   APP_NOTICE_DEFS.forEach(([key,btnId,statusId])=>{
-     const hidden=isAppNoticeHidden(key);
-     const btn=document.getElementById(btnId);
-     const status=document.getElementById(statusId);
-     if(btn) btn.style.display=hidden?"none":"";
-     if(status) status.textContent="미확인";
-     if(!hidden) visibleCount++;
-   });
-
-   const wrap=document.querySelector(".app-notice-wrap");
-   const summary=document.getElementById("appNoticeSummary");
-   const title=wrap?.querySelector(".app-notice-title");
-
-   if(visibleCount===0){
-     if(wrap) wrap.style.display="none";
+   const wrap=document.getElementById("appNoticeWrap");
+   if(appNoticesAreHidden()){
+     if(wrap)wrap.style.display="none";
      return;
    }
+   if(wrap)wrap.style.display="";
 
-   if(wrap) wrap.style.display="";
-   if(title) title.textContent="다음 고지문은 각각 눌러 팝업에서 확인 체크 후 닫아주세요.";
+   APP_NOTICE_DEFS.forEach(([key,btnId,statusId])=>{
+     const done=!!appNoticeState[key];
+     const btn=document.getElementById(btnId);
+     const status=document.getElementById(statusId);
+     if(status)status.textContent=done?"확인완료":"미확인";
+     if(btn)btn.classList.toggle("done",done);
+   });
+
+   const ok=appNoticesAllConfirmed();
+   const summary=document.getElementById("appNoticeSummary");
+   const icon=document.getElementById("appNoticeCloseAll");
+   const closeAllBtn=document.getElementById("appNoticeCloseAllBtn");
+
    if(summary){
-     summary.textContent=`남은 고지문 ${visibleCount}개를 확인해 주세요. 확인 후 닫으면 10일 동안 화면에서 숨겨집니다.`;
-     summary.classList.remove("ok");
+     summary.textContent=ok
+       ?"고지문 4가지 확인이 완료되었습니다. ✕ 전체 닫기를 누르면 10일 동안 이 고지문 영역이 보이지 않습니다."
+       :"고지문 4가지를 모두 확인하면 오른쪽 위 ✕ 전체 닫기 아이콘이 활성화됩니다.";
+     summary.classList.toggle("ok",ok);
    }
+   if(icon){
+     icon.disabled=!ok;
+     icon.classList.toggle("ready",ok);
+   }
+   if(closeAllBtn)closeAllBtn.disabled=!ok;
  }
 
  function bindAppNoticeDialog(key, btnId, dlgId, chkId, closeBtnId){
@@ -704,18 +984,16 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
    if(!openBtn||!dlg||!chk||!closeBtn)return;
 
    openBtn.addEventListener("click",()=>{
-     chk.checked=false;
-     closeBtn.disabled=true;
+     chk.checked=!!appNoticeState[key];
+     closeBtn.disabled=!chk.checked;
      dlg.showModal();
    });
 
-   chk.addEventListener("change",()=>{
-     closeBtn.disabled=!chk.checked;
-   });
+   chk.addEventListener("change",()=>{ closeBtn.disabled=!chk.checked; });
 
    closeBtn.addEventListener("click",()=>{
      if(!chk.checked)return;
-     hideAppNoticeFor10Days(key);
+     appNoticeState[key]=true;
      dlg.close();
      updateAppNoticeUI();
    });
@@ -726,6 +1004,12 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
    bindAppNoticeDialog("official","appOfficialBtn","officialNoticeDlg","officialNoticeChk","officialNoticeClose");
    bindAppNoticeDialog("privacy","appPrivacyBtn","privacyNoticeDlg","privacyNoticeChk","privacyNoticeClose");
    bindAppNoticeDialog("install","appInstallBtn","installGuideDlg","installGuideChk","installGuideClose");
+
+   const icon=document.getElementById("appNoticeCloseAll");
+   const closeAllBtn=document.getElementById("appNoticeCloseAllBtn");
+   if(icon)icon.addEventListener("click",hideAllAppNoticesFor10Days);
+   if(closeAllBtn)closeAllBtn.addEventListener("click",hideAllAppNoticesFor10Days);
+
    updateAppNoticeUI();
  }
 
@@ -1306,7 +1590,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  function applyTf(){viewport.setAttribute('transform',`translate(${tf.x},${tf.y}) scale(${tf.k})`)}
  function fit(){if(['bonus','table','plan'].includes(view))return;const list=activeLayout();if(!list.length)return;const xs=list.map(x=>x.x),ys=list.map(x=>x.y),minX=Math.min(...xs)-75,maxX=Math.max(...xs)+75,minY=Math.min(...ys)-75,maxY=Math.max(...ys)+75,w=$('stage').clientWidth,h=$('stage').clientHeight,k=Math.min(w/(maxX-minX),h/(maxY-minY),1.2);tf.k=Math.max(.11,k);tf.x=(w-(minX+maxX)*tf.k)/2;tf.y=(h-(minY+maxY)*tf.k)/2;applyTf()}
  $('fitBtn').onclick=fit;
- // V16.10: 빈 공간뿐 아니라 노드 위에서도 드래그하면 자유롭게 상하·좌우 이동합니다.
+ // V16.13: 빈 공간뿐 아니라 노드 위에서도 드래그하면 자유롭게 상하·좌우 이동합니다.
  svg.onpointerdown=e=>{
    if(e.pointerType==='touch' && e.isPrimary===false)return;
    drag={x:e.clientX,y:e.clientY,tx:tf.x,ty:tf.y,moved:false,pointerId:e.pointerId};
@@ -1360,6 +1644,58 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  },{passive:false});
  svg.addEventListener('touchend',e=>{if(e.touches.length<2)pinch=null;if(!drag)svg.classList.remove('panning')});
 
+
+ // V16.13 계보도 전체화면 / 나가기
+ const treeFullscreenBtn=$('treeFullscreenBtn');
+ const treeFullscreenExitBtn=$('treeFullscreenExitBtn');
+
+ function isBrowserFullscreen(){
+   return !!(document.fullscreenElement || document.webkitFullscreenElement);
+ }
+ function applyTreeFullscreenMode(on){
+   document.body.classList.toggle('tree-fullscreen-mode',!!on);
+   setTimeout(()=>{
+     try{fit()}catch(e){}
+   },80);
+ }
+ async function enterTreeFullscreen(){
+   applyTreeFullscreenMode(true);
+   try{
+     const el=document.documentElement;
+     if(!isBrowserFullscreen()){
+       if(el.requestFullscreen) await el.requestFullscreen();
+       else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+     }
+   }catch(e){
+     // 브라우저가 전체화면 API를 막아도 CSS 전체화면 모드는 계속 사용
+   }
+ }
+ async function exitTreeFullscreen(){
+   try{
+     if(document.fullscreenElement && document.exitFullscreen) await document.exitFullscreen();
+     else if(document.webkitFullscreenElement && document.webkitExitFullscreen) document.webkitExitFullscreen();
+   }catch(e){}
+   applyTreeFullscreenMode(false);
+ }
+ if(treeFullscreenBtn)treeFullscreenBtn.onclick=enterTreeFullscreen;
+ if(treeFullscreenExitBtn)treeFullscreenExitBtn.onclick=exitTreeFullscreen;
+
+ document.addEventListener('fullscreenchange',()=>{
+   if(!document.fullscreenElement && document.body.classList.contains('tree-fullscreen-mode')){
+     applyTreeFullscreenMode(false);
+   }
+ });
+ document.addEventListener('webkitfullscreenchange',()=>{
+   if(!document.webkitFullscreenElement && document.body.classList.contains('tree-fullscreen-mode')){
+     applyTreeFullscreenMode(false);
+   }
+ });
+ document.addEventListener('keydown',e=>{
+   if(e.key==='Escape' && document.body.classList.contains('tree-fullscreen-mode')){
+     applyTreeFullscreenMode(false);
+   }
+ });
+
  $('printBtn').onclick=()=>window.print();
  $('backupBtn').onclick=()=>{const blob=new Blob([JSON.stringify({app:'viable-binary-v6',DB,settings},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='THE_VISION_FAMILY_바이너리계보_내백업.json';a.click();URL.revokeObjectURL(a.href)};
  $('restoreBtn').onclick=()=>$('fileInput').click();
@@ -1373,7 +1709,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
    window.addEventListener('load',async()=>{
      try{
-       const reg=await navigator.serviceWorker.register('./sw.js?v=16.10',{updateViaCache:'none'});
+       const reg=await navigator.serviceWorker.register('./sw.js?v=16.13',{updateViaCache:'none'});
        await reg.update();
      }catch(e){}
    });

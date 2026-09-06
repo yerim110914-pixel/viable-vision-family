@@ -1,8 +1,8 @@
 {
   "name": "THE VISION FAMILY 바이너리 후원계보",
   "short_name": "더비젼패밀리",
-  "description": "THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 후원계보 · V16.6 자유 스크롤 개선",
-  "start_url": "./?v=16.6",
+  "description": "THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 후원계보 · V16.7 자유 스크롤 개선",
+  "start_url": "./?v=16.7",
   "scope": "./",
   "display": "standalone",
   "background_color": "#101828",

@@ -1,10 +1,10 @@
-const CACHE='the-vision-family-v16-6-1';
+const CACHE='the-vision-family-v16-7-1';
 const ASSETS=[
-  './manifest.webmanifest?v=16.6',
-  './icon-192.png?v=16.6',
-  './icon-512.png?v=16.6',
-  './favicon.png?v=16.6',
-  './vision-logo.png?v=16.6'
+  './manifest.webmanifest?v=16.7',
+  './icon-192.png?v=16.7',
+  './icon-512.png?v=16.7',
+  './favicon.png?v=16.7',
+  './vision-logo.png?v=16.7'
 ];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(async c=>{for(const u of ASSETS){try{await c.add(u)}catch(e){}}}));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});

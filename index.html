@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=5,user-scalable=yes">
 <title>THE VISION FAMILY 바이너리 후원계보</title>
-<link rel="manifest" href="manifest.webmanifest?v=16.13">
+<link rel="manifest" href="manifest.webmanifest?v=16.14">
 <meta name="theme-color" content="#101828">
 
 <meta name="description" content="THE VISION FAMILY 개인 제작·비공식 교육용 가상 바이너리 계보도 · 실제 수익을 보장하지 않습니다.">
@@ -12,19 +12,19 @@
 <meta property="og:site_name" content="THE VISION FAMILY">
 <meta property="og:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta property="og:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.13">
-<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.13">
+<meta property="og:url" content="https://yerim110914-pixel.github.io/viable-vision-family/?v=16.14">
+<meta property="og:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.14">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE VISION FAMILY 바이너리 후원계보">
 <meta name="twitter:description" content="개인 제작·비공식 교육용 가상 계보도 · 실제 수익을 보장하지 않으며 공식 회사 전산이 아닙니다.">
-<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.13">
+<meta name="twitter:image" content="https://yerim110914-pixel.github.io/viable-vision-family/icon-512.png?v=16.14">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="더비젼패밀리">
-<link rel="apple-touch-icon" href="icon-192.png?v=16.13">
-<link rel="icon" type="image/png" href="favicon.png?v=16.13">
+<link rel="apple-touch-icon" href="icon-192.png?v=16.14">
+<link rel="icon" type="image/png" href="favicon.png?v=16.14">
 <style>
 :root{
  --bg:#f4f7fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#98a2b3;
@@ -317,14 +317,14 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 }
 
 
-/* V16.13 자유 스크롤·드래그 이동 */
+/* V16.14 자유 스크롤·드래그 이동 */
 #svg{cursor:grab;touch-action:none;overscroll-behavior:none}
 #svg.panning{cursor:grabbing}
 #stage{overscroll-behavior:contain}
 .pan-help{font-weight:700;color:#344054}
 
 
-/* V16.13 고지문 전체 닫기 */
+/* V16.14 고지문 전체 닫기 */
 .app-notice-head{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
 }
@@ -351,7 +351,7 @@ dialog::backdrop{background:rgba(16,24,40,.55)}.dh{background:#101828;color:#fff
 }
 
 
-/* V16.13 모바일 메뉴바 축소 + 페이지 확대/축소 */
+/* V16.14 모바일 메뉴바 축소 + 페이지 확대/축소 */
 html,body{touch-action:pan-x pan-y pinch-zoom}
 .header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .header-actions button,.header-actions .activation-chip{white-space:nowrap}
@@ -470,7 +470,7 @@ header,.tabs,.toolbar,.app-notice-wrap{
 }
 
 
-/* V16.13 계보도 전체화면/나가기 아이콘 */
+/* V16.14 계보도 전체화면/나가기 아이콘 */
 .tree-view-controls{
   position:absolute;
   top:10px;
@@ -580,6 +580,95 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
   }
 }
 
+
+/* V16.14 회원별 색상 선택 */
+.color-swatches{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(58px,1fr));
+  gap:7px;
+}
+.color-swatch{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  min-height:58px;
+  padding:6px 5px;
+  background:#fff;
+  border:2px solid #e4e7ec;
+  border-radius:10px;
+  color:#344054;
+  font-size:10px;
+}
+.color-swatch.selected{
+  border-color:#2563eb;
+  box-shadow:0 0 0 2px rgba(37,99,235,.12);
+  background:#eff6ff;
+}
+.color-dot{
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  border:1px solid rgba(52,64,84,.35);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);
+}
+.color-auto-mark{
+  display:grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff4d8 0 33%,#eaf2ff 33% 66%,#eafff3 66% 100%);
+  border:1px solid #98a2b3;
+  font-weight:900;
+  color:#344054;
+}
+.color-custom-row{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  padding:8px 9px;
+  border:1px solid #e4e7ec;
+  border-radius:10px;
+  background:#f8fafc;
+}
+.custom-color-label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:11px!important;
+  font-weight:800;
+  color:#344054!important;
+}
+#customColorF{
+  width:42px!important;
+  height:34px;
+  padding:2px!important;
+  border-radius:8px;
+  cursor:pointer;
+}
+.color-preview{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  border:1px solid #98a2b3;
+  background:#fff;
+}
+.color-preview span{
+  width:24px;
+  height:24px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff4d8 0 33%,#eaf2ff 33% 66%,#eafff3 66% 100%);
+}
+@media(max-width:760px){
+  .color-swatches{grid-template-columns:repeat(3,minmax(70px,1fr))}
+  .color-swatch{min-height:54px}
+}
+
 </style>
 </head>
 <body>
@@ -587,7 +676,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
   <div class="gate-card">
     <img class="gate-logo" src="vision-logo.png" alt="THE VISION">
     <div class="gate-title">THE VISION FAMILY</div>
-    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.13 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
+    <div class="gate-sub">스폰서 미팅용 가상 바이너리 계보도<br>추천인 패스워드를 입력한 사용자만 활성화할 수 있습니다.<br><b>V16.14 보안강화:</b> 5회 오류 잠금 · 30분 미사용 자동잠금 · 24시간 재인증</div>
 
     <div class="gate-field">
       <label>추천</label>
@@ -606,7 +695,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
     </label>
 
     <div class="security-box" id="securityInfo">
-      <b>🔐 V16.13 보안강화</b><br>
+      <b>🔐 V16.14 보안강화</b><br>
       • 비밀번호는 원문으로 저장하지 않고 PBKDF2 검증값으로 확인합니다.<br>
       • 5회 연속 오류 시 이 기기에서 15분 동안 로그인이 잠깁니다.<br>
       • 30분 동안 사용하지 않으면 자동 잠금됩니다.<br>
@@ -752,6 +841,48 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
         </select>
       </div>
     </div>
+    <div class="field">
+      <label>회원 원형 색상</label>
+      <input id="colorF" type="hidden" value="">
+      <div class="color-swatches" id="colorSwatches">
+        <button type="button" class="color-swatch color-auto" data-node-color="" title="자동 색상">
+          <span class="color-auto-mark">A</span><b>자동</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#FFE5A3" title="골드">
+          <span class="color-dot" style="background:#FFE5A3"></span><b>골드</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#CFE2FF" title="파랑">
+          <span class="color-dot" style="background:#CFE2FF"></span><b>파랑</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#D9F2FF" title="하늘">
+          <span class="color-dot" style="background:#D9F2FF"></span><b>하늘</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#D6F5E3" title="초록">
+          <span class="color-dot" style="background:#D6F5E3"></span><b>초록</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#EAF7C8" title="연두">
+          <span class="color-dot" style="background:#EAF7C8"></span><b>연두</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#E9D8FD" title="보라">
+          <span class="color-dot" style="background:#E9D8FD"></span><b>보라</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#FADADD" title="분홍">
+          <span class="color-dot" style="background:#FADADD"></span><b>분홍</b>
+        </button>
+        <button type="button" class="color-swatch" data-node-color="#E5E7EB" title="회색">
+          <span class="color-dot" style="background:#E5E7EB"></span><b>회색</b>
+        </button>
+      </div>
+      <div class="color-custom-row">
+        <label class="custom-color-label">
+          사용자 지정
+          <input id="customColorF" type="color" value="#FFE5A3" aria-label="사용자 지정 색상">
+        </label>
+        <div class="color-preview" id="colorPreview"><span></span></div>
+        <span class="small" id="colorValueText">자동 색상</span>
+      </div>
+      <div class="small">색상을 지정하지 않으면 기존처럼 TOP·L·R 위치에 따라 자동 색상이 적용됩니다.</div>
+    </div>
     <div class="field"><label>직추천인</label><select id="referrerF"></select></div>
     <div class="row">
       <div class="field"><label>본인 누적 PV</label><input id="pvF" type="number" min="0" value="0"></div>
@@ -874,7 +1005,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
     </div>
     <div class="legal-section">
       <h4>6. 접근보안 안내</h4>
-      <p>V16.13는 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
+      <p>V16.14는 비밀번호 원문 미저장, 반복대입 지연, 5회 오류 15분 잠금, 30분 미사용 자동잠금, 24시간 재인증을 적용합니다.</p>
       <p>다만 GitHub Pages는 정적 웹호스팅이므로 전문적인 소스 분석이나 브라우저 저장소 조작까지 차단하는 서버 인증과 동일한 보안 수준은 아닙니다. 기밀·민감정보 보관용으로 사용하지 마십시오.</p>
     </div>
     <div class="notice">이 고지는 일반적인 위험 완화를 위한 안내이며 개별 사안에 대한 법률자문 또는 적법성 보증을 의미하지 않습니다.</div>
@@ -1199,6 +1330,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
    const pw=document.getElementById("accessPassword");
    if(pw)pw.addEventListener("keydown",e=>{if(e.key==="Enter")activateProtectedApp()});
  setupInfoDialogs();
+ setupMemberColorPicker();
    unlockInterface();
    updateLockMessage();
 
@@ -1281,7 +1413,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
  };
 
  const uid=()=> 'm_'+Math.random().toString(36).slice(2,10);
- const mk=(v={})=>Object.assign({id:uid(),name:'',code:'',rankOverride:'',pv:0,cv:0,joinDate:'',phone:'',memo:'',parentId:null,side:'',referrerId:null},v);
+ const mk=(v={})=>Object.assign({id:uid(),name:'',code:'',rankOverride:'',pv:0,cv:0,joinDate:'',phone:'',memo:'',parentId:null,side:'',referrerId:null,nodeColor:''},v);
  const all=()=>Object.values(DB.members);
  const get=id=>id?DB.members[id]||null:null;
  const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -1377,7 +1509,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
        const old=JSON.parse(localStorage.getItem(key)||'null');
        if(old&&old.members){
          for(const o of Object.values(old.members)){
-           const m=mk({id:o.id||uid(),name:o.name||'',code:o.code||'',rankOverride:o.rankOverride||o.rank||'',pv:Number(o.pv||0),cv:Number(o.cv||0),joinDate:o.joinDate||'',phone:o.phone||'',memo:o.memo||'',parentId:o.parentId||null,side:o.side||'',referrerId:o.referrerId||null});
+           const m=mk({id:o.id||uid(),name:o.name||'',code:o.code||'',rankOverride:o.rankOverride||o.rank||'',pv:Number(o.pv||0),cv:Number(o.cv||0),joinDate:o.joinDate||'',phone:o.phone||'',memo:o.memo||'',parentId:o.parentId||null,side:o.side||'',referrerId:o.referrerId||null,nodeColor:o.nodeColor||o.color||''});
            DB.members[m.id]=m;
          }
          DB.rootId=old.rootId||all().find(x=>!x.parentId)?.id||all()[0]?.id||null;
@@ -1397,6 +1529,64 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
    settings.sponsorRates=Object.assign({MANIA:12,DIRECTOR:12,EMERALD:12,DIAMOND:12,GREEN_DIAMOND:10,BLUE_DIAMOND:10,RED_DIAMOND:10,CROWN:10},settings.sponsorRates||{});
  }
 
+ const NODE_COLOR_PRESETS=[
+   {label:'골드',value:'#FFE5A3'},
+   {label:'파랑',value:'#CFE2FF'},
+   {label:'하늘',value:'#D9F2FF'},
+   {label:'초록',value:'#D6F5E3'},
+   {label:'연두',value:'#EAF7C8'},
+   {label:'보라',value:'#E9D8FD'},
+   {label:'분홍',value:'#FADADD'},
+   {label:'회색',value:'#E5E7EB'}
+ ];
+ function validNodeColor(v){
+   const s=String(v||'').trim();
+   return /^#[0-9a-fA-F]{6}$/.test(s)?s.toUpperCase():'';
+ }
+ function nodeTextColor(hex){
+   const c=validNodeColor(hex);
+   if(!c)return '';
+   const r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);
+   const yiq=(r*299+g*587+b*114)/1000;
+   return yiq<145?'#FFFFFF':'#182230';
+ }
+ function setMemberColorPicker(value){
+   const color=validNodeColor(value);
+   const hidden=$('colorF');
+   const custom=$('customColorF');
+   const text=$('colorValueText');
+   const preview=$('colorPreview')?.querySelector('span');
+   if(hidden)hidden.value=color;
+   document.querySelectorAll('#colorSwatches [data-node-color]').forEach(btn=>{
+     btn.classList.toggle('selected',String(btn.dataset.nodeColor||'').toUpperCase()===color);
+   });
+   if(custom&&color)custom.value=color;
+   if(text){
+     const preset=NODE_COLOR_PRESETS.find(x=>x.value===color);
+     text.textContent=color?(preset?`${preset.label} · ${color}`:`사용자 지정 · ${color}`):'자동 색상';
+   }
+   if(preview){
+     preview.style.background=color||'linear-gradient(135deg,#fff4d8 0 33%,#eaf2ff 33% 66%,#eafff3 66% 100%)';
+   }
+ }
+ function setupMemberColorPicker(){
+   const swatches=$('colorSwatches');
+   if(swatches&&!swatches.dataset.bound){
+     swatches.dataset.bound='1';
+     swatches.addEventListener('click',e=>{
+       const btn=e.target.closest('[data-node-color]');
+       if(!btn)return;
+       setMemberColorPicker(btn.dataset.nodeColor||'');
+     });
+   }
+   const custom=$('customColorF');
+   if(custom&&!custom.dataset.bound){
+     custom.dataset.bound='1';
+     custom.addEventListener('input',()=>setMemberColorPicker(custom.value));
+     custom.addEventListener('change',()=>setMemberColorPicker(custom.value));
+   }
+ }
+
  function layout(rootId=DB.rootId,directOnly=false){
    const out=[];let cursor=0;
    const H_GAP=128;   // 좌우 직하위 간격: 기존보다 촘촘하게
@@ -1414,12 +1604,19 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
  function addLink(a,b){const p=document.createElementNS('http://www.w3.org/2000/svg','path'),mid=(a.y+b.y)/2;p.setAttribute('d',`M${a.x},${a.y+44} C${a.x},${mid} ${b.x},${mid} ${b.x},${b.y-44}`);p.setAttribute('class','link');links.appendChild(p)}
  function addNode(d){
    const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.dataset.id=d.m.id;g.setAttribute('transform',`translate(${d.x},${d.y})`);g.setAttribute('class',`node ${d.side} ${selected===d.m.id?'selected':''}`);g.style.cursor='pointer';
-   const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','47');g.appendChild(c);
+   const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','47');
+   const chosenColor=validNodeColor(d.m.nodeColor);
+   if(chosenColor)c.style.fill=chosenColor;
+   g.appendChild(c);
    const tag=document.createElementNS('http://www.w3.org/2000/svg','text');tag.setAttribute('class','tag');tag.setAttribute('y','-56');tag.textContent=d.side==='left'?'L':d.side==='right'?'R':'TOP';g.appendChild(tag);
    const n=document.createElementNS('http://www.w3.org/2000/svg','text');n.setAttribute('class','nm');n.setAttribute('y','-15');n.textContent=(d.m.name||'').slice(0,8);g.appendChild(n);
    const r=document.createElementNS('http://www.w3.org/2000/svg','text');r.setAttribute('class','sub');r.setAttribute('y','2');r.textContent=rankOf(d.m.id).label.slice(0,14);g.appendChild(r);
    const p=document.createElementNS('http://www.w3.org/2000/svg','text');p.setAttribute('class','sub');p.setAttribute('y','18');p.textContent='PV '+num(groupPV(d.m.id));g.appendChild(p);
    const v=document.createElementNS('http://www.w3.org/2000/svg','text');v.setAttribute('class','sub');v.setAttribute('y','32');v.textContent='CV '+num(d.m.cv);g.appendChild(v);
+   if(chosenColor){
+     const tc=nodeTextColor(chosenColor);
+     [n,r,p,v].forEach(t=>t.style.fill=tc);
+   }
    g.onclick=e=>{e.stopPropagation();if(suppressNodeClick){suppressNodeClick=false;return}detailClosedThisSelection=false;selected=d.m.id;draw();say(d.m.name+' 선택')};
    g.ondblclick=e=>{e.stopPropagation();selected=d.m.id;openEdit(d.m)};
    nodes.appendChild(g);
@@ -1531,14 +1728,14 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
    formMode='new';pendingParent=parentId;pendingSide=side;
    $('memberTitle').textContent=auto?'아래 빈자리 후원 등록':`${side==='left'?'왼쪽(L)':'오른쪽(R)'} 직하위 회원 등록`;
    $('placementNotice').textContent=`후원 위치: ${p.name} → ${side==='left'?'왼쪽(L)':'오른쪽(R)'}`;
-   $('nameF').value='';$('codeF').value='';$('rankF').value='';$('pvF').value=0;$('cvF').value=0;$('dateF').value='';$('phoneF').value='';$('memoF').value='';
+   $('nameF').value='';$('codeF').value='';$('rankF').value='';$('pvF').value=0;$('cvF').value=0;$('dateF').value='';$('phoneF').value='';$('memoF').value='';setMemberColorPicker('');
    $('referrerF').innerHTML=refOptions(null);$('referrerF').value=selected||'';
    $('memberDlg').showModal();setTimeout(()=>$('nameF').focus(),60);
  }
  function openEdit(m){
    formMode='edit';pendingParent=m.parentId;pendingSide=m.side;
    const p=get(m.parentId);$('memberTitle').textContent='회원 정보 수정';$('placementNotice').textContent=m.id===DB.rootId?'최상위 회원':`현재 후원 위치: ${p?.name||''} → ${m.side==='left'?'L':'R'}`;
-   $('nameF').value=m.name||'';$('codeF').value=m.code||'';$('rankF').value=m.rankOverride||'';$('pvF').value=m.pv||0;$('cvF').value=m.cv||0;$('dateF').value=m.joinDate||'';$('phoneF').value=m.phone||'';$('memoF').value=m.memo||'';
+   $('nameF').value=m.name||'';$('codeF').value=m.code||'';$('rankF').value=m.rankOverride||'';$('pvF').value=m.pv||0;$('cvF').value=m.cv||0;$('dateF').value=m.joinDate||'';$('phoneF').value=m.phone||'';$('memoF').value=m.memo||'';setMemberColorPicker(m.nodeColor||'');
    $('referrerF').innerHTML=refOptions(m.id);$('referrerF').value=m.referrerId||'';
    $('memberDlg').showModal();setTimeout(()=>$('nameF').focus(),60);
  }
@@ -1546,7 +1743,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
    const name=$('nameF').value.trim();if(!name)return alert('이름을 입력하세요.');
    let m=formMode==='edit'?get(selected):mk();const referrerId=$('referrerF').value||null;
    if(m&&referrerId&&(referrerId===m.id||isReferralDescendant(m.id,referrerId)))return alert('자기 자신이나 자신의 추천 하위회원을 직추천인으로 지정할 수 없습니다.');
-   Object.assign(m,{name,code:$('codeF').value.trim(),rankOverride:$('rankF').value||'',pv:Number($('pvF').value||0),cv:Number($('cvF').value||0),joinDate:$('dateF').value,phone:$('phoneF').value.trim(),memo:$('memoF').value.trim(),referrerId});
+   Object.assign(m,{name,code:$('codeF').value.trim(),rankOverride:$('rankF').value||'',pv:Number($('pvF').value||0),cv:Number($('cvF').value||0),joinDate:$('dateF').value,phone:$('phoneF').value.trim(),memo:$('memoF').value.trim(),referrerId,nodeColor:validNodeColor($('colorF').value)});
    if(formMode==='new'){m.parentId=pendingParent;m.side=pendingSide;DB.members[m.id]=m;selected=m.id}
    $('memberDlg').close();save();draw();setTimeout(fit,30);
  };
@@ -1590,7 +1787,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
  function applyTf(){viewport.setAttribute('transform',`translate(${tf.x},${tf.y}) scale(${tf.k})`)}
  function fit(){if(['bonus','table','plan'].includes(view))return;const list=activeLayout();if(!list.length)return;const xs=list.map(x=>x.x),ys=list.map(x=>x.y),minX=Math.min(...xs)-75,maxX=Math.max(...xs)+75,minY=Math.min(...ys)-75,maxY=Math.max(...ys)+75,w=$('stage').clientWidth,h=$('stage').clientHeight,k=Math.min(w/(maxX-minX),h/(maxY-minY),1.2);tf.k=Math.max(.11,k);tf.x=(w-(minX+maxX)*tf.k)/2;tf.y=(h-(minY+maxY)*tf.k)/2;applyTf()}
  $('fitBtn').onclick=fit;
- // V16.13: 빈 공간뿐 아니라 노드 위에서도 드래그하면 자유롭게 상하·좌우 이동합니다.
+ // V16.14: 빈 공간뿐 아니라 노드 위에서도 드래그하면 자유롭게 상하·좌우 이동합니다.
  svg.onpointerdown=e=>{
    if(e.pointerType==='touch' && e.isPrimary===false)return;
    drag={x:e.clientX,y:e.clientY,tx:tf.x,ty:tf.y,moved:false,pointerId:e.pointerId};
@@ -1645,7 +1842,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
  svg.addEventListener('touchend',e=>{if(e.touches.length<2)pinch=null;if(!drag)svg.classList.remove('panning')});
 
 
- // V16.13 계보도 전체화면 / 나가기
+ // V16.14 계보도 전체화면 / 나가기
  const treeFullscreenBtn=$('treeFullscreenBtn');
  const treeFullscreenExitBtn=$('treeFullscreenExitBtn');
 
@@ -1709,7 +1906,7 @@ body:not(.tree-fullscreen-mode) #treeFullscreenExitBtn{display:none}
  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
    window.addEventListener('load',async()=>{
      try{
-       const reg=await navigator.serviceWorker.register('./sw.js?v=16.13',{updateViaCache:'none'});
+       const reg=await navigator.serviceWorker.register('./sw.js?v=16.14',{updateViaCache:'none'});
        await reg.update();
      }catch(e){}
    });
